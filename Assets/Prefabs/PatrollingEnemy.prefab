@@ -143,8 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointList: []
   isDead: 0
-  waitOnArrival: 0
+  timeToWait: 10
   speed: 0
+  rotationSpeed: 10
 --- !u!1 &9109842577102267858
 GameObject:
   m_ObjectHideFlags: 0
