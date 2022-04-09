@@ -6,11 +6,16 @@ public class Enemy : MonoBehaviour
 {
 
     public List<Transform> waypointList;
-    public bool isDead;
+    
+    public bool killed = false;
+
     public float timeToWait = 10;
     public float speed = 2;
     public float rotationSpeed = 10;
 
+    public Animator animator;
+
+    private bool isDead;
     private IEnumerator<Transform> waypointEnumerator;
     private Transform currentWaypoint;
     private bool arrived;
@@ -26,6 +31,8 @@ public class Enemy : MonoBehaviour
             return;
         }
 
+        animator = GetComponentInChildren<Animator>();
+
         waypointEnumerator = waypointList.GetEnumerator();
         Transform initialWaypoint = NextWaypoint();
         transform.position = initialWaypoint.position;
@@ -38,6 +45,12 @@ public class Enemy : MonoBehaviour
         if (isDead)
             return;
 
+        if (killed) {
+            AnimateDeath();
+            isDead = true;
+            killed = false;
+        }
+
         if (arrived) {
             waitingTime += Time.deltaTime;
         }
@@ -47,7 +60,6 @@ public class Enemy : MonoBehaviour
             arrived = false;
             waitingTime = 0;
         }
-
 
         if (shouldMove) {
             Move();
@@ -60,32 +72,19 @@ public class Enemy : MonoBehaviour
         }
 
         LookAtWaypoint();
-
-        //if (arrived && waitingTime >= waitOnArrival) {
-        //    arrived = false;
-        //    NextWaypoint();
-        //}
-
-        //if(arrived) {
-        //    waitingTime += Time.deltaTime;
-        //}
-
-        //LookAtNextWaypoint();
-        //Move();
-
-        Debug.Log("Current " + currentWaypoint.name);
+        Animate();
     }
 
     void Move()
     {
-        //transform.position += transform.forward * speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, speed * Time.deltaTime);
     }
 
     void LookAtWaypoint()
     {
         //transform.LookAt(currentWaypoint);
-        Quaternion rot = Quaternion.LookRotation(currentWaypoint.position, Vector3.up);
+        //Quaternion rot = Quaternion.LookRotation(currentWaypoint.position, Vector3.up);
+        Quaternion rot = Quaternion.LookRotation(currentWaypoint.position - transform.position);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
     }
 
@@ -97,5 +96,15 @@ public class Enemy : MonoBehaviour
             waypointEnumerator.Reset();
             return NextWaypoint();
         }
+    }
+
+    void Animate()
+    {
+        animator.SetBool("isWalking", shouldMove);      
+    }
+
+    void AnimateDeath()
+    {
+        animator.SetTrigger("Die");
     }
 }
