@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     void FixedUpdate() // FixedUpdate para evitar que el personaje traspase las paredes
     {
         Movement();
-        Debug.Log(currentStamina);
     }
 
     void Movement()
@@ -34,17 +33,26 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 movement = new Vector3(horizontal, 0, vertical) * currentSpeed;
-        
+        Vector3 movement = new Vector3(0, 0, vertical) * currentSpeed;
+        transform.Translate(movement * Time.deltaTime);
 
-        if(horizontal != 0 && vertical != 0)
+        if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.MovePosition(transform.position + movement * Time.deltaTime * 0.707f); // Para evitar que el personaje se mueva más rapido en las diagonales
+            transform.Rotate(new Vector3(0, -150 * Time.deltaTime, 0));
         }
-        else
+        if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.MovePosition(transform.position + movement * Time.deltaTime);
+            transform.Rotate(new Vector3(0, 150 * Time.deltaTime, 0));
         }
+
+        //if(horizontal != 0 && vertical != 0)
+        //{
+        //    rigidbody.MovePosition(transform.position + movement * Time.deltaTime * 0.707f); // Para evitar que el personaje se mueva más rapido en las diagonales
+        //}
+        //else
+        //{
+        //    rigidbody.MovePosition(transform.position + movement * Time.deltaTime);
+        //}
 
         // Running
 
@@ -63,7 +71,7 @@ public class Player : MonoBehaviour
             RegenerarStamina();
         }
 
-        if (currentStamina > maxStamina)
+        if (currentStamina > maxStamina) // Para evitar que el player tenga más stamina de la cantidad máxima
         {
             currentStamina = maxStamina;
         }
@@ -89,6 +97,26 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsRunning", false);
         }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            animator.SetBool("IsTurningLeft", true);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            animator.SetBool("IsTurningRight", true);
+        }
+
+        //if (Input.GetKeyUp(KeyCode.A))
+        //{
+        //    animator.SetBool("IsTurningLeft", false);
+        //}
+        //
+        //if (Input.GetKeyUp(KeyCode.D))
+        //{
+        //    animator.SetBool("IsTurningRight", false);
+        //}
     }
 
     #region Métodos
