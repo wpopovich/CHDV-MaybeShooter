@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         //LookAtNextWaypoint();
         //Move();
 
-        Debug.Log("Current " + currentWaypoint.name);
+        //Debug.Log("Current " + currentWaypoint.name);
     }
 
     void Move()
