@@ -38,21 +38,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(new Vector3(0, -150 * Time.deltaTime, 0));
+            RotarIzquierda();
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(new Vector3(0, 150 * Time.deltaTime, 0));
+            RotarDerecha();
         }
-
-        //if(horizontal != 0 && vertical != 0)
-        //{
-        //    rigidbody.MovePosition(transform.position + movement * Time.deltaTime * 0.707f); // Para evitar que el personaje se mueva más rapido en las diagonales
-        //}
-        //else
-        //{
-        //    rigidbody.MovePosition(transform.position + movement * Time.deltaTime);
-        //}
 
         // Running
 
@@ -97,16 +88,6 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsRunning", false);
         }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            animator.SetBool("IsTurningLeft", true);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            animator.SetBool("IsTurningRight", true);
-        }
     }
 
     #region Métodos
@@ -129,5 +110,15 @@ public class Player : MonoBehaviour
         currentStamina += 0.6f;
     }
 
+    void RotarIzquierda()
+    {
+        transform.Rotate(new Vector3(0, -150 * Time.deltaTime, 0));
+    }
+
+    void RotarDerecha()
+    {
+        transform.Rotate(new Vector3(0, 150 * Time.deltaTime, 0));
+    }
+    
     #endregion
 }
