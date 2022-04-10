@@ -98,4 +98,9 @@ public class Enemy : MonoBehaviour
             return NextWaypoint();
         }
     }
+
+    public void Kill()
+    {
+
+    }
 }

@@ -31,4 +31,27 @@ public class Player : MonoBehaviour
         Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * actualSpeed;
         rigidbody.MovePosition(transform.position + movement * Time.deltaTime);
     }
+
+    void DrawInteractionUI()
+    {
+        Debug.Log("Press E to interact with this entity");
+    }
+
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Objective")) {
+            DrawInteractionUI();
+            if (Input.GetAxisRaw("Interact") > 0) {
+                InteractableObjective objective = other.GetComponent<InteractableObjective>();
+                objective.CompleteObjective();
+            }
+        } else if (other.CompareTag("Enemy")) {
+            DrawInteractionUI();
+            if (Input.GetAxisRaw("Interact") > 0) {
+                Enemy enemy = other.GetComponent<Enemy>();
+                enemy.Kill();
+            }
+        }
+    }
 }
