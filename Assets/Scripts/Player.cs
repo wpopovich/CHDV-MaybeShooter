@@ -107,16 +107,6 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsTurningRight", true);
         }
-
-        //if (Input.GetKeyUp(KeyCode.A))
-        //{
-        //    animator.SetBool("IsTurningLeft", false);
-        //}
-        //
-        //if (Input.GetKeyUp(KeyCode.D))
-        //{
-        //    animator.SetBool("IsTurningRight", false);
-        //}
     }
 
     #region Métodos
