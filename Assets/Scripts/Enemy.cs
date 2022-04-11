@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     private bool arrived;
     private bool shouldMove;
     private float waitingTime;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,8 @@ public class Enemy : MonoBehaviour
         ValidateEnemy(enemyType);
         InitEnemy(enemyType);
 
-        animator = GetComponentInChildren<Animator>();        
+        animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void ValidateEnemy(EnemyType enemyType)
@@ -149,5 +151,6 @@ public class Enemy : MonoBehaviour
     public void Kill()
     {
         killed = true;
+        audioSource.Play();
     }
 }

@@ -1,0 +1,11 @@
+El juego esta basado en la idea de sigilio. El jugador tiene que lograr los objetivos del nivel (Como recuperar inteligencia, hackear computadoras, sabotear terminales, etc), sin ser detectado por los enemigos. 
+Una vez que el jugador completa todos los objetivos del nivel, la salida del nivel se habilita para que el jugador pueda salir y pasar al siguiente nivel.
+
+El jugador se mueve con las teclas WASD, y puede interactuar con los enemigos y objetivos con la tecla E
+
+
+La historia:
+En el futuro, las grandes corporaciones crearon robots para administrar sus fabricas. Estas fabricas varian desde la manufacturacion de mas robots, hasta el analisis de informacion que podria poner en peligro al mundo
+El personaje principal es un agente especial, cuyo objetivo es infiltrarse en estas fabricas, recuperar informacion vital, sabotear las operaciones de las mismas, y escapar sin que nadie detecte su presencia.
+Para esto, fue entrenado desde joven con herramientas que le permitiran evitar y deshabilitar los robots, hackear terminales, y moverse en total sigilo cuando es necesario
+
