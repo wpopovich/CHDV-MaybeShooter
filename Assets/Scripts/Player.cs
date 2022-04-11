@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         float currentSpeed = speed;
         currentStamina = maxStamina;
+        DarInstruccionesDeJuego();
     }
 
     void FixedUpdate() // FixedUpdate para evitar que el personaje traspase las paredes
@@ -28,14 +29,16 @@ public class Player : MonoBehaviour
     void Movement()
     {
 
-        // Movimiento 
+        // Movimiento
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
         Vector3 movement = new Vector3(0, 0, vertical) * currentSpeed;
+
+        // Movimiento adelante y atrás
         transform.Translate(movement * Time.deltaTime);
 
+        // Rotación izquierda y derecha
         if (Input.GetKey(KeyCode.A))
         {
             RotarIzquierda();
@@ -45,14 +48,15 @@ public class Player : MonoBehaviour
             RotarDerecha();
         }
 
-        // Running
+        // Running/walking
+
+        // El player cuenta con una barra de stamina o energía, la cual si está cargada le permite correr por un tiempo determinado.
 
         if (Input.GetKey(KeyCode.LeftShift) && movement != Vector3.zero && currentStamina > 0) // Player está corriendo
         {
             Run();
-            
         }
-        else // Player no está corriendo
+        else
         {
             Walk();
         }
@@ -65,6 +69,11 @@ public class Player : MonoBehaviour
         if (currentStamina > maxStamina) // Para evitar que el player tenga más stamina de la cantidad máxima
         {
             currentStamina = maxStamina;
+        }
+
+        if(currentStamina <= 0)
+        {
+            Debug.Log("No tienes más stamina. Quédate quieto para regenerar tu stamina.");
         }
 
         // Animator
@@ -120,22 +129,19 @@ public class Player : MonoBehaviour
         transform.Rotate(new Vector3(0, 150 * Time.deltaTime, 0));
     }
 
-    void DrawInteractionUI()
+    void DarInstruccionesDeJuego()
     {
-        Debug.Log("Press E to interact with this entity");
+        Debug.Log("W y S para mover el personaje adelante y atrás. A y D para rotar. E para neutralizar enemigos y para tomar el objetivo. LShift para correr (consume stamina)");
     }
-
 
     public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Objective")) {
-            DrawInteractionUI();
             if (Input.GetAxisRaw("Interact") > 0) {
                 InteractableObjective objective = other.GetComponent<InteractableObjective>();
                 objective.CompleteObjective();
             }
         } else if (other.CompareTag("Enemy")) {
-            DrawInteractionUI();
             if (Input.GetAxisRaw("Interact") > 0) {
                 Enemy enemy = other.GetComponent<Enemy>();
                 enemy.Kill();
