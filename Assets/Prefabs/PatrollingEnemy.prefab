@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3573187330542872660}
   - component: {fileID: 7551672340250360558}
   - component: {fileID: 3319972365602928078}
+  - component: {fileID: 6475142786723524473}
   m_Layer: 0
   m_Name: PatrollingEnemy
   m_TagString: Untagged
@@ -46,11 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
-  waypointList: []
+  waypointList:
+  - {fileID: 0}
+  - {fileID: 0}
   killed: 0
-  timeToWait: 0
-  speed: 0
-  rotationSpeed: 0
+  timeToWait: 5
+  speed: 2
+  rotationSpeed: 10
 --- !u!65 &3319972365602928078
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64,6 +67,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7239598, y: 1.7360663, z: 0.31583375}
   m_Center: {x: 0.048684895, y: 0.87791157, z: -0.03285256}
+--- !u!65 &6475142786723524473
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422665534971791255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84031916, y: 1.5772119, z: 0.5171857}
+  m_Center: {x: 0.014330924, y: 0.8144475, z: -0.44079232}
 --- !u!1001 &5785485588096790131
 PrefabInstance:
   m_ObjectHideFlags: 0

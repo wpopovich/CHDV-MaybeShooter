@@ -71,6 +71,10 @@ public class Enemy : MonoBehaviour
             AnimateDeath();
             isDead = true;
             killed = false;
+            List<BoxCollider> colliderList = new List<BoxCollider>();
+            colliderList.AddRange(GetComponents<BoxCollider>());
+            colliderList.ForEach(c => c.enabled = false);
+
         }
 
         switch(enemyType) {
@@ -144,6 +148,6 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
-
+        killed = true;
     }
 }

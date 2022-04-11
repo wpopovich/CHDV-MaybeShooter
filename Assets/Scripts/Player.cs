@@ -143,5 +143,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WorldExit")) {
+            Debug.Log("Level Completed!");
+        }
+    }
+
     #endregion
 }
