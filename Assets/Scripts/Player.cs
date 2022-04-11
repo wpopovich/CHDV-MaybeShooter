@@ -119,6 +119,36 @@ public class Player : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 150 * Time.deltaTime, 0));
     }
-    
+
+    void DrawInteractionUI()
+    {
+        Debug.Log("Press E to interact with this entity");
+    }
+
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Objective")) {
+            DrawInteractionUI();
+            if (Input.GetAxisRaw("Interact") > 0) {
+                InteractableObjective objective = other.GetComponent<InteractableObjective>();
+                objective.CompleteObjective();
+            }
+        } else if (other.CompareTag("Enemy")) {
+            DrawInteractionUI();
+            if (Input.GetAxisRaw("Interact") > 0) {
+                Enemy enemy = other.GetComponent<Enemy>();
+                enemy.Kill();
+            }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WorldExit")) {
+            Debug.Log("Level Completed!");
+        }
+    }
+
     #endregion
 }
