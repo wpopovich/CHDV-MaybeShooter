@@ -71,6 +71,11 @@ public class Player : MonoBehaviour
             currentStamina = maxStamina;
         }
 
+        if(currentStamina <= 0)
+        {
+            Debug.Log("No tienes más stamina. Quédate quieto para regenerar tu stamina.");
+        }
+
         // Animator
 
         if (movement != Vector3.zero) // Player se está moviendo
