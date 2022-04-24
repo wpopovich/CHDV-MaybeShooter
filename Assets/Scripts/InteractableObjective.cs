@@ -6,20 +6,30 @@ public class InteractableObjective : MonoBehaviour
 {
     public ObjectiveScript objective;
     private bool completed = false;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void CompleteObjective()
     {
         if (completed)
             return;
 
-        switch (objective.GetObjectiveType()) {
-            case ObjectiveScript.Type.Intel:
-                Debug.Log("Intel has been retrieved");
-                break;
-
-        }
-
+        Debug.Log(objective.completedText);
+        ObjectiveManager.GetInstance().ShowSuccessText(objective.completedText);
+        PlaySound();
         completed = true;
+    }
+
+    void PlaySound()
+    {
+        if (objective.audioClip != null) {
+            audioSource.clip = objective.audioClip;
+            audioSource.Play();
+        }
     }
 
     public bool isCompleted()

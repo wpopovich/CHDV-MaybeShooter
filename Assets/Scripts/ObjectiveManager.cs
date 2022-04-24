@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class ObjectiveManager : MonoBehaviour
     public WorldExit worldExit;
     public GameObject nextObjectiveIndicator;
     public Text objectiveText;
+    public TMP_Text objectiveSuccesText;
+    public float successTextMaxShowTime;
 
     private bool objectivesCompleted = false;
     private GameObject currentObjective;
+    private float successTextTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +45,11 @@ public class ObjectiveManager : MonoBehaviour
                 UpdateObjectiveDescription(worldExit.gameObject);
                 objectivesCompleted = true;
             }
-            Debug.Log(nextObjective);
-            Debug.Log(currentObjective);
-            
         }
+
+        successTextTimer += Time.deltaTime;
+        if (successTextTimer >= successTextMaxShowTime)
+            objectiveSuccesText.gameObject.SetActive(false);
 
     }
     private void UpdateObjectiveDescription(GameObject objective)
@@ -80,5 +85,12 @@ public class ObjectiveManager : MonoBehaviour
         }
 
         return instance;
+    }
+
+    public void ShowSuccessText(string text)
+    {
+        objectiveSuccesText.text = text;
+        objectiveSuccesText.gameObject.SetActive(true);
+        successTextTimer = 0;
     }
 }
