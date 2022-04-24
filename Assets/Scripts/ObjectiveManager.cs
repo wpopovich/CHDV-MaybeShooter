@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ObjectiveManager : MonoBehaviour
     public List<InteractableObjective> objectives;
     public WorldExit worldExit;
     public GameObject nextObjectiveIndicator;
-    //public WorldExit exit;
+    public Text objectiveText;
 
     private bool objectivesCompleted = false;
     private GameObject currentObjective;
@@ -30,14 +31,32 @@ public class ObjectiveManager : MonoBehaviour
             InteractableObjective nextObjective = objectives.Find(o => !o.isCompleted());
             if (nextObjective != null && nextObjective != currentObjective) {
                 SetCurrentObjective(nextObjective.gameObject);
+                UpdateObjectiveDescription(currentObjective);
             }
 
             List<InteractableObjective> completedObjectives = objectives.FindAll(obj => obj.isCompleted());
             if (completedObjectives.Count == objectives.Count) {
                 EnableExit();
                 SetCurrentObjective(worldExit.gameObject);
+                UpdateObjectiveDescription(worldExit.gameObject);
                 objectivesCompleted = true;
             }
+            Debug.Log(nextObjective);
+            Debug.Log(currentObjective);
+            
+        }
+
+    }
+    private void UpdateObjectiveDescription(GameObject objective)
+    {
+        InteractableObjective maybeInteractable = objective.GetComponent<InteractableObjective>();
+        if (maybeInteractable != null) {
+            objectiveText.text = maybeInteractable.GetObjectiveDescription();
+        }
+
+        WorldExit maybeWorldExit = objective.GetComponent<WorldExit>();
+        if (maybeWorldExit != null) {
+            objectiveText.text = "All objectives completed. Head over to the world exit now";
         }
     }
 
@@ -45,7 +64,7 @@ public class ObjectiveManager : MonoBehaviour
     {
         currentObjective = newObjective;
         Vector3 newPosition = new Vector3(newObjective.transform.position.x, newObjective.transform.position.y + 2, newObjective.transform.position.z);
-        nextObjectiveIndicator.transform.position = newPosition;
+        nextObjectiveIndicator.transform.position = newPosition;               
     }
 
     private void EnableExit()

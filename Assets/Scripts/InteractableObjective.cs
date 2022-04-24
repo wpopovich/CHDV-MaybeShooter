@@ -10,19 +10,20 @@ public class InteractableObjective : MonoBehaviour
     }
 
     public InteractableObjectiveType objectiveType;
-    
+    public string objectiveText;
+
     private bool completed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-                
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void CompleteObjective()
@@ -43,5 +44,10 @@ public class InteractableObjective : MonoBehaviour
     public bool isCompleted()
     {
         return completed;
+    }
+
+    public string GetObjectiveDescription()
+    {
+        return objectiveText;
     }
 }
