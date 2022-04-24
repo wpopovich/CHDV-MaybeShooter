@@ -45,15 +45,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6169995568546223248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36fbd72733fc638438f011be4ec01c4a, type: 3}
+  m_Script: {fileID: 11500000, guid: ad783719aff15644f8b6d0ff11deda1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
-  waypointList: []
   killed: 0
-  timeToWait: 0
-  speed: 0
-  rotationSpeed: 0
 --- !u!65 &8499302010866737008
 BoxCollider:
   m_ObjectHideFlags: 0
