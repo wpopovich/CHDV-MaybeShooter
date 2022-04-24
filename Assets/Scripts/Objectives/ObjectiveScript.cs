@@ -7,10 +7,13 @@ public class ObjectiveScript : ScriptableObject
 {
     public enum Type
     {
-        Intel
+        Intel,
+        Hackable
     }
     public Type objectiveType;
     public string objectiveText;
+    public string completedText;
+    public AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
