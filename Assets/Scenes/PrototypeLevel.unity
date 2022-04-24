@@ -16961,6 +16961,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8783062016055688677, guid: 8556e55bb5b838449ba75dafb8e43b99, type: 3}
+      propertyPath: objective
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f97f5cacb896a54f9595684fcf9ab9e, type: 2}
+    - target: {fileID: 8783062016055688677, guid: 8556e55bb5b838449ba75dafb8e43b99, type: 3}
       propertyPath: objectiveText
       value: Recover the Intel!
       objectReference: {fileID: 0}
