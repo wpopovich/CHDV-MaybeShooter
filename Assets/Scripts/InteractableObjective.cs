@@ -4,35 +4,16 @@ using UnityEngine;
 
 public class InteractableObjective : MonoBehaviour
 {
-    public enum InteractableObjectiveType
-    {
-        Intel
-    }
-
-    public InteractableObjectiveType objectiveType;
-    public string objectiveText;
-
+    public ObjectiveScript objective;
     private bool completed = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void CompleteObjective()
     {
         if (completed)
             return;
 
-        switch (objectiveType) {
-            case InteractableObjectiveType.Intel:
+        switch (objective.GetObjectiveType()) {
+            case ObjectiveScript.Type.Intel:
                 Debug.Log("Intel has been retrieved");
                 break;
 
@@ -48,6 +29,6 @@ public class InteractableObjective : MonoBehaviour
 
     public string GetObjectiveDescription()
     {
-        return objectiveText;
+        return objective.GetObjectiveText();
     }
 }

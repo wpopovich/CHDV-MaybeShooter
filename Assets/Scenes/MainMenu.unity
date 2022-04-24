@@ -195,6 +195,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PatrollingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: timeToWait
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1286106461}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1682060009}
     - target: {fileID: 3573187330542872660, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1914,6 +1934,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PatrollingEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: timeToWait
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[0]
+      value: 
+      objectReference: {fileID: 994229658}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[1]
+      value: 
+      objectReference: {fileID: 466031965}
     - target: {fileID: 3573187330542872660, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: m_RootOrder
       value: 1

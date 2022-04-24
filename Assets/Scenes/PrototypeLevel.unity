@@ -9797,6 +9797,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: timeToWait
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1684664317}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1102080255}
     - target: {fileID: 3573187330542872660, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -16945,6 +16961,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8783062016055688677, guid: 8556e55bb5b838449ba75dafb8e43b99, type: 3}
+      propertyPath: objective
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f97f5cacb896a54f9595684fcf9ab9e, type: 2}
+    - target: {fileID: 8783062016055688677, guid: 8556e55bb5b838449ba75dafb8e43b99, type: 3}
       propertyPath: objectiveText
       value: Recover the Intel!
       objectReference: {fileID: 0}
@@ -21079,6 +21099,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: timeToWait
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[0]
+      value: 
+      objectReference: {fileID: 307040153}
+    - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: waypointList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1305629836}
     - target: {fileID: 3573187330542872660, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: m_RootOrder
       value: 3
