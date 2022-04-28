@@ -9,16 +9,18 @@ public class Player : MonoBehaviour
     float currentSpeed;
     public float maxStamina = 100;
     float currentStamina;
-    new private Rigidbody rigidbody;
+    // new private Rigidbody rigidbody;
     public Animator animator;
     bool isRunning;
+    public CharacterController cController;
+    float turnSmoothVelocity;
+    float turnSmoothTime = 0.25f;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        // rigidbody = GetComponent<Rigidbody>();
         float currentSpeed = speed;
         currentStamina = maxStamina;
-        DarInstruccionesDeJuego();
     }
 
     void FixedUpdate() // FixedUpdate para evitar que el personaje traspase las paredes
@@ -28,31 +30,27 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-
-        // Movimiento
+        // Movimiento básico
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 movement = new Vector3(0, 0, vertical) * currentSpeed;
+        Vector3 movement = new Vector3(horizontal, 0, vertical).normalized * currentSpeed;
 
-        // Movimiento adelante y atrás
-        transform.Translate(movement * Time.deltaTime);
-
-        // Rotación izquierda y derecha
-        if (Input.GetKey(KeyCode.A))
+        if(movement.magnitude >= 0.1f) 
         {
-            RotarIzquierda();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            RotarDerecha();
-        }
+            // Todo este bodoque se encarga de la rotación en la que mira el personaje mientras se mueve
 
-        // Running/walking
+            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); // Suaviza la rotación
 
-        // El player cuenta con una barra de stamina o energía, la cual si está cargada le permite correr por un tiempo determinado.
+            transform.rotation = Quaternion.Euler(0, angle, 0);
 
-        if (Input.GetKey(KeyCode.LeftShift) && movement != Vector3.zero && currentStamina > 0) // Player está corriendo
+            cController.Move(movement * speed * Time.deltaTime);
+        }        
+
+        // Running/walking animator
+
+        if (Input.GetAxisRaw("Run") > 0 && movement != Vector3.zero && currentStamina > 0) // Si el player está corriendo
         {
             Run();
         }
@@ -61,7 +59,7 @@ public class Player : MonoBehaviour
             Walk();
         }
 
-        if (movement == Vector3.zero && currentStamina != maxStamina) // Si el player está quieto, regenera su stamina
+        if (movement == Vector3.zero && currentStamina <= maxStamina) // Si el player está quieto, regenera su stamina
         {
             RegenerarStamina();
         }
@@ -119,21 +117,6 @@ public class Player : MonoBehaviour
         currentStamina += 0.6f;
     }
 
-    void RotarIzquierda()
-    {
-        transform.Rotate(new Vector3(0, -150 * Time.deltaTime, 0));
-    }
-
-    void RotarDerecha()
-    {
-        transform.Rotate(new Vector3(0, 150 * Time.deltaTime, 0));
-    }
-
-    void DarInstruccionesDeJuego()
-    {
-        Debug.Log("W y S para mover el personaje adelante y atrás. A y D para rotar. E para neutralizar enemigos y para tomar el objetivo. LShift para correr (consume stamina)");
-    }
-
     public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Objective")) {
@@ -141,7 +124,8 @@ public class Player : MonoBehaviour
                 InteractableObjective objective = other.GetComponent<InteractableObjective>();
                 objective.CompleteObjective();
             }
-        } else if (other.CompareTag("Enemy")) {
+        } 
+        else if (other.CompareTag("Enemy")) {
             if (Input.GetAxisRaw("Interact") > 0) {
                 Enemy enemy = other.GetComponent<Enemy>();
                 enemy.Kill();

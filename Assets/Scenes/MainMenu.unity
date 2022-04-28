@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041243486, g: 0.073045455, b: 0.12553218, a: 1}
+  m_IndirectSpecularColor: {r: 0.041243024, g: 0.07304468, b: 0.12553185, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5609821023822160295, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7191380693428818762, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -178,9 +182,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8260673801416085034, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8340975681105293612, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
       propertyPath: m_Name
       value: ShrineLamp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340975681105293612, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
@@ -194,6 +206,14 @@ PrefabInstance:
     - target: {fileID: 422665534971791255, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: m_Name
       value: PatrollingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 626381983666095972, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 626381983666095972, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: speed
@@ -311,7 +331,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4926171343510148999, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+    - {fileID: 3319972365602928078, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+    - {fileID: 6475142786723524473, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
 --- !u!1 &32040536
 GameObject:
@@ -1180,7 +1203,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: b68b7c3d0db40374f85e5baafdd4fecb, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &606866971
 Terrain:
   m_ObjectHideFlags: 0
@@ -1195,7 +1218,7 @@ Terrain:
   m_TreeBillboardDistance: 415
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 203.6
+  m_DetailObjectDistance: 192
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -1238,6 +1261,10 @@ PrefabInstance:
     - target: {fileID: 160098, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 3}
       propertyPath: m_Name
       value: RainPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 160098, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 470886, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 3}
       propertyPath: m_RootOrder
@@ -1357,7 +1384,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1934,6 +1961,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PatrollingEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 626381983666095972, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.048
+      objectReference: {fileID: 0}
+    - target: {fileID: 626381983666095972, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.744
+      objectReference: {fileID: 0}
     - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: speed
       value: 10
@@ -2030,7 +2065,10 @@ PrefabInstance:
       propertyPath: m_Range
       value: 310.73816
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4926171343510148999, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+    - {fileID: 3319972365602928078, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+    - {fileID: 6475142786723524473, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
 --- !u!1 &1100993263
 GameObject:
@@ -3549,6 +3587,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5609821023822160295, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7191380693428818762, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3593,9 +3635,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8260673801416085034, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8340975681105293612, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
       propertyPath: m_Name
       value: ShrineLamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340975681105293612, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 748b715c937930c4fa6c7c4ca2624f57, type: 3}
@@ -3606,6 +3656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 538312143}
     m_Modifications:
+    - target: {fileID: 3874088196962568457, guid: 87c02321f7341404ab815adf2855a0e4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7389354330505918753, guid: 87c02321f7341404ab815adf2855a0e4, type: 3}
       propertyPath: m_RootOrder
       value: 1
