@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float runningSpeed;
     float currentSpeed;
     public float maxStamina = 100;
-    float currentStamina;
+    public static float currentStamina;
     // new private Rigidbody rigidbody;
     public Animator animator;
     bool isRunning;

@@ -52,15 +52,17 @@ public class ObjectiveManager : MonoBehaviour
             objectiveSuccesText.gameObject.SetActive(false);
 
     }
-    private void UpdateObjectiveDescription(GameObject objective)
+    void UpdateObjectiveDescription(GameObject objective)
     {
         InteractableObjective maybeInteractable = objective.GetComponent<InteractableObjective>();
-        if (maybeInteractable != null) {
+        if (maybeInteractable != null)
+        {
             objectiveText.text = maybeInteractable.GetObjectiveDescription();
         }
 
         WorldExit maybeWorldExit = objective.GetComponent<WorldExit>();
-        if (maybeWorldExit != null) {
+        if (maybeWorldExit != null)
+        {
             objectiveText.text = "All objectives completed. Head over to the world exit now";
         }
     }
