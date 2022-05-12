@@ -24,7 +24,6 @@ public class StaticEnemyAnimationCycle : StateMachineBehaviour
         if (!calculatedMinTimer) {
             randomMinTimer = Random.Range(minTimer, maxTimer);
             calculatedMinTimer = true;
-            Debug.Log("Calculating");
         }
 
     }

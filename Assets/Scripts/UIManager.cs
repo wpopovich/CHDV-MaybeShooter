@@ -12,6 +12,4 @@ public class UIManager : MonoBehaviour
     {
         foregroundStaminaBar.fillAmount = Player.currentStamina / 100;
     }
-
-    
 }
