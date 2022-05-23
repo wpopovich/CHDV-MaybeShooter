@@ -1,23 +1,51 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audSource;
-    public AudioClip music;
+    //public AudioSource audSource;
+    //public AudioClip music;
+
+    public Sound[] sounds;
+
+    private void Awake()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.loop = s.loop;
+        }
+    }
+
+    public void Play(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+    }
 
     private void Start()
     {
-        StartCoroutine(PlaySound(music));
+        StartCoroutine(PlayMainMenuMusic());
     }
-
-    public IEnumerator PlaySound(AudioClip sound)
+    
+    public IEnumerator PlayMainMenuMusic()
     {
-        audSource.clip = sound;
-
         yield return new WaitForSeconds(2);
 
-        audSource.Play();
+        Play("MainMenuMusic");
+    }
+
+    public void PlayPointerEnterSound()
+    {
+        Play("PointerEnter");
+    }
+
+    public void PlayPointerClickSound()
+    {
+        Play("PointerClick");
     }
 }

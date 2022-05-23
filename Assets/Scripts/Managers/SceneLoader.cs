@@ -10,7 +10,6 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextScene()
     {
-        DontDestroyOnLoad(gameObject);
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 

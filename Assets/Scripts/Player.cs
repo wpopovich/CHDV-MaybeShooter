@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public Animator animator;
     bool isRunning;
     public CharacterController cController;
+    public float turnSmoothTime = 0.25f;
     float turnSmoothVelocity;
-    float turnSmoothTime = 0.25f;
 
     void Start()
     {
@@ -67,11 +67,6 @@ public class Player : MonoBehaviour
         if (currentStamina > maxStamina) // Para evitar que el player tenga más stamina de la cantidad máxima
         {
             currentStamina = maxStamina;
-        }
-
-        if(currentStamina <= 0)
-        {
-            Debug.Log("No tienes más stamina. Quédate quieto para regenerar tu stamina.");
         }
 
         // Animator

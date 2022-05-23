@@ -91,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 525253854236285681}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -6.857225, y: 0, z: -8.432258}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85929, y: 0.85929, z: 0.85929}
   m_Children:
   - {fileID: 6706006734661595401}
   - {fileID: 4634645989500035295}
@@ -149,6 +149,7 @@ MonoBehaviour:
   runningSpeed: 19
   maxStamina: 100
   animator: {fileID: 831893011543407597}
+  cController: {fileID: 0}
 --- !u!1 &690273617656473062
 GameObject:
   m_ObjectHideFlags: 0
