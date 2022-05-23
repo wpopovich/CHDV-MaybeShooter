@@ -18,7 +18,7 @@ public class SceneLoader : MonoBehaviour
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(levelIndex);
     }
 
     public void ExitGame()
