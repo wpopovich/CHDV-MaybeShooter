@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float currentSpeed;
     public float maxStamina = 100;
     public static float currentStamina;
+
     public Animator animator;
     bool isAttacking = false;
     bool isInteracting = false;
@@ -141,7 +142,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    #region Métodos
+    #region Métodos y funciones
 
     void Run()
     {
@@ -177,7 +178,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetAxisRaw("Interact") > 0)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.CompareTag("Enemy") && !isAttacking)
             {
                 StartCoroutine(KillEnemy(other));
             }
@@ -193,7 +194,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Kill");
         isAttacking = true;
 
-        yield return new WaitForSeconds(1f); // Para que la animación de la kill del player coordine con la animación de muerte del enemigo
+        yield return new WaitForSeconds(0.3f); // Para que la animación de la kill del player coordine con la animación de muerte del enemigo
 
         enemyToKill.GetComponent<Enemy>().Kill();
         isAttacking = false;
