@@ -8,12 +8,22 @@ public class MovingEnemy : Enemy
     public float timeToWait = 10;
     public float speed = 2;
     public float rotationSpeed = 10;
+    public Light visionLight;
+    public float timeForAlarm;
 
     private IEnumerator<Transform> waypointEnumerator;
     private Transform currentWaypoint;
     private bool arrived;
     private bool shouldMove;
     private float waitingTime;
+    private Color calm = Color.green;
+    private Color alerted = Color.yellow;
+    private Color detected = Color.red;
+    private bool playerDetected;
+
+    private float alarmTimer;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +38,10 @@ public class MovingEnemy : Enemy
         waypointEnumerator = waypointList.GetEnumerator();
         Transform initialWaypoint = NextWaypoint();
         transform.position = initialWaypoint.position;
+        alarmTimer = 0;
+        playerDetected = false;
+        visionLight.color = calm;
+
         arrived = true;
 
     }
@@ -39,7 +53,7 @@ public class MovingEnemy : Enemy
             return;
 
         KillEnemy(killed);
-        
+
         if (arrived) {
             waitingTime += Time.deltaTime;
         }
@@ -62,6 +76,9 @@ public class MovingEnemy : Enemy
 
         LookAtWaypoint();
         Animate();
+        LookForPlayer();
+        DetectPlayer();
+        UpdateLightColor();
     }
 
     Transform NextWaypoint()
@@ -88,5 +105,39 @@ public class MovingEnemy : Enemy
     void Animate()
     {
         animator.SetBool("isWalking", shouldMove);
+    }
+
+    void DetectPlayer()
+    {
+        if (playerInVisionCone) {
+            alarmTimer += Time.deltaTime;
+            if (alarmTimer > timeForAlarm)
+                alarmTimer = timeForAlarm;
+        } else {
+            alarmTimer = Mathf.Max(0, alarmTimer - Time.deltaTime);
+        }
+
+        if (alarmTimer >= timeForAlarm) {
+            Debug.Log("PLayerDetected");
+            playerDetected = true;
+            LevelManager.GetInstance().Detected();
+        }
+    }
+
+    void UpdateLightColor()
+    {
+        if (playerInVisionCone) {
+            visionLight.color = Color.Lerp(visionLight.color, detected, Time.deltaTime) ;
+        } else {
+            visionLight.color = Color.Lerp(visionLight.color, calm, Time.deltaTime);
+        }
+    }
+
+    protected override void OnKill()
+    {
+        if (playerDetected)
+            LevelManager.GetInstance().StopAlarm();
+
+        visionLight.gameObject.SetActive(false);
     }
 }

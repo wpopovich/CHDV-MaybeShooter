@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4926171343510148999}
   m_Layer: 0
   m_Name: PatrollingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,10 +49,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killed: 0
+  visionRange: 10
+  visionAngle: 15
   waypointList: []
   timeToWait: 10
   speed: 2
   rotationSpeed: 10
+  visionLight: {fileID: 7821668843747281971}
+  timeForAlarm: 0
 --- !u!65 &3319972365602928078
 BoxCollider:
   m_ObjectHideFlags: 0
