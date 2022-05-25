@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     float currentSpeed;
     public float maxStamina = 100;
     public static float currentStamina;
-    // new private Rigidbody rigidbody;
     public Animator animator;
     bool isRunning;
     public CharacterController cController;
@@ -18,14 +17,14 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        // rigidbody = GetComponent<Rigidbody>();
-        float currentSpeed = speed;
         currentStamina = maxStamina;
     }
 
     void FixedUpdate() // FixedUpdate para evitar que el personaje traspase las paredes
     {
-        Movement();
+        if (!LevelManager.GetInstance().gameOver) {
+            Movement();
+        }
     }
 
     void Movement()
