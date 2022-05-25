@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     public float currentSpeed;
     public float maxStamina = 100;
     public static float currentStamina;
-
     public Animator animator;
     bool isAttacking = false;
     bool isInteracting = false;
@@ -32,8 +31,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        // rigidbody = GetComponent<Rigidbody>();
-        float currentSpeed = speed;
         currentStamina = maxStamina;
         //currentTaskTime = taskDuration;
 
@@ -41,8 +38,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Movement();
-
+        if (!LevelManager.GetInstance().gameOver) {
+            Movement();
+        }
     }
 
     void Movement()
