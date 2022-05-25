@@ -37,8 +37,13 @@ public class ObjectiveManager : MonoBehaviour
                 SetCurrentObjective(nextObjective.gameObject);
                 UpdateObjectiveDescription(currentObjective);
             }
-
             List<InteractableObjective> completedObjectives = objectives.FindAll(obj => obj.isCompleted());
+            Debug.Log(completedObjectives.Count);
+            completedObjectives.ForEach(o => {
+                Debug.Log(o.name);
+                Debug.Log(o.isCompleted());
+            });
+            
             if (completedObjectives.Count == objectives.Count) {
                 EnableExit();
                 SetCurrentObjective(worldExit.gameObject);
@@ -48,10 +53,8 @@ public class ObjectiveManager : MonoBehaviour
         }
 
         successTextTimer += Time.deltaTime;
-        //if (successTextTimer >= successTextMaxShowTime)
-            //objectiveSuccesText.gameObject.SetActive(false);
-
     }
+
     void UpdateObjectiveDescription(GameObject objective)
     {
         InteractableObjective maybeInteractable = objective.GetComponent<InteractableObjective>();

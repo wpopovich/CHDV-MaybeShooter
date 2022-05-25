@@ -9,7 +9,12 @@ public class UIManager : MonoBehaviour
     public Text objectiveText;
     public Animator animator;
     public GameObject pauseMenu;
-    public GameObject failureCanvas;
+    public GameObject failedLevelText;
+
+    private void Start()
+    {
+        LevelManager.GetInstance().onGameOver += ShowGameOverMenu;
+    }
 
     private void Update()
     {
@@ -20,14 +25,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void TogglePauseMenu()
+    public void TogglePauseMenu()
     {
         bool currentToggle = pauseMenu.activeSelf;
+        Debug.Log(currentToggle);
         pauseMenu.SetActive(!currentToggle);
         if (!currentToggle) {
             Time.timeScale = 0;
         } else {
             Time.timeScale = 1;
         }
+    }
+
+    public void ShowGameOverMenu() {
+        pauseMenu.SetActive(true);
+        failedLevelText.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.GetInstance().onGameOver -= ShowGameOverMenu;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public float timeBeforeEndGame;
+    public event Action onGameOver;
 
     [SerializeField]
     private Player player;
@@ -25,8 +27,6 @@ public class LevelManager : MonoBehaviour
     private float alarmCounter;
     private bool activeAlarm;
     public bool gameOver = false;
-
-
     public static LevelManager GetInstance()
     {
         return instance;
@@ -53,8 +53,6 @@ public class LevelManager : MonoBehaviour
         if (activeAlarm && alarmCounter >= timeBeforeEndGame) {
             GameOver();
         }
-
-        TogglePauseMenu();
     }
 
     public Player Player()
@@ -87,15 +85,8 @@ public class LevelManager : MonoBehaviour
         if (!gameOver) {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             gameOver = true;
-            Time.timeScale = 0;
+            onGameOver?.Invoke();
             Debug.Log("GameOver");
-        }
-    }
-
-    public void TogglePauseMenu()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            pauseMenu.SetActive(!pauseMenu.activeSelf);
         }
     }
 

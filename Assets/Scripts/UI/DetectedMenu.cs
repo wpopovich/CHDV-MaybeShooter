@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DetectedMenu : MonoBehaviour
 {
+    public GameObject failedText;
     public void Retry()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -21,5 +22,10 @@ public class DetectedMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowFailedText()
+    {
+        failedText.SetActive(true);
     }
 }

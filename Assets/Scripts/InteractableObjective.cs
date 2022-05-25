@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableObjective : MonoBehaviour
 {
     public ObjectiveScript objective;
-    public static bool completed = false;
+    public bool completed = false;
     private AudioSource audioSource;
 
     private void Start()
@@ -15,11 +15,10 @@ public class InteractableObjective : MonoBehaviour
 
     public void CompleteObjective()
     {
-        if (completed)
+        if (isCompleted())
             return;
 
         Debug.Log(objective.completedText);
-        //ObjectiveManager.GetInstance().ShowSuccessText(objective.completedText);
         PlaySound();
         completed = true;
     }
