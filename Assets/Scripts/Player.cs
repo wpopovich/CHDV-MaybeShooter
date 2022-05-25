@@ -209,6 +209,7 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(7.3f);
 
+        Debug.Log(interactableObjective.name);
         interactableObjective.GetComponent<InteractableObjective>().CompleteObjective();
         isInteracting = false;
         worldCanvas.SetActive(false);
