@@ -1,47 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    public CharacterController cController;
+
     public float speed;
     public float runningSpeed;
     public float sneakingSpeed;
     public float currentSpeed;
     public float maxStamina = 100;
     public static float currentStamina;
-    // new private Rigidbody rigidbody;
+
     public Animator animator;
-    bool isCrouching = false;
-    bool isRunning;
-    public CharacterController cController;
-    public float turnSmoothTime = 0.25f;
-    float turnSmoothVelocity;
     bool isAttacking = false;
     bool isInteracting = false;
+    bool isCrouching = false;
+    bool isRunning;
+
+    public GameObject worldCanvas;
+    public GameObject interactButton;
+
+    //public float taskDuration = 7f;
+    //float currentTaskTime;
+    //bool taskIsFinished = false;
+
+    public float turnSmoothTime = 0.25f;
+    float turnSmoothVelocity;
 
     void Start()
     {
         // rigidbody = GetComponent<Rigidbody>();
         float currentSpeed = speed;
         currentStamina = maxStamina;
+        //currentTaskTime = taskDuration;
+
     }
 
-    void Update() // FixedUpdate para evitar que el personaje traspase las paredes
+    void Update()
     {
         Movement();
-        LockPlayerMovemementIfIsInteracting();
+
     }
 
     void Movement()
     {
+        LockPlayerMovemementIfIsInteracting();
+
         // Movimiento básico
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 movement = new Vector3(horizontal, 0, vertical).normalized * currentSpeed;
 
-        if (movement.magnitude >= 0.1f) 
+        if (movement.magnitude >= 0.1f)
         {
             // Todo este bodoque se encarga de la rotación en la que mira el personaje mientras se mueve
 
@@ -51,7 +65,7 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angle, 0);
 
             cController.Move(movement * speed * Time.deltaTime);
-        }  
+        }
 
         // Running/walking/sneaking
 
@@ -158,15 +172,20 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
+        if (other.CompareTag("Enemy") || other.CompareTag("Objective"))
+        {
+            interactButton.SetActive(true);
+        }
+
         if (Input.GetAxisRaw("Interact") > 0)
         {
-            if (other.CompareTag("Objective"))
-            {
-                StartCoroutine(InteractWithComputer(other));
-            }
-            else if (other.CompareTag("Enemy"))
+            if (other.CompareTag("Enemy"))
             {
                 StartCoroutine(KillEnemy(other));
+            }
+            else if (other.CompareTag("Objective"))
+            {
+                StartCoroutine(InteractWithComputer(other));
             }
         }
     }
@@ -184,13 +203,15 @@ public class Player : MonoBehaviour
 
     public IEnumerator InteractWithComputer(Collider interactableObjective)
     {
-        animator.SetTrigger("InteractWithComputer");
+        animator.SetTrigger("Interact");
         isInteracting = true;
+        worldCanvas.SetActive(true);
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(7.3f);
 
         interactableObjective.GetComponent<InteractableObjective>().CompleteObjective();
         isInteracting = false;
+        worldCanvas.SetActive(false);
     }
 
     void LockPlayerMovemementIfIsInteracting()
@@ -205,9 +226,23 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("WorldExit")) {
+        if (other.CompareTag("WorldExit"))
+        {
             Debug.Log("Level Completed!");
         }
+    }
+    
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("Objective"))
+        {
+            interactButton.SetActive(false);
+        }
+    }
+
+    void ShowInteractableButton()
+    {
+        interactButton.SetActive(true);
     }
 
     #endregion

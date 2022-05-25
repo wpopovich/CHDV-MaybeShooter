@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public Image foregroundStaminaBar;
     public Text objectiveText;
+    public Animator animator;
 
     private void Update()
     {
