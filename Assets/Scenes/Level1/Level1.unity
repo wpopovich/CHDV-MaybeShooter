@@ -1340,6 +1340,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2b1c300a6cdfb14c98d8e2408ca7884, type: 3}
+--- !u!1 &144001951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4288967133776541392, guid: 269057db6377c694eae45f9f9f6c595a, type: 3}
+  m_PrefabInstance: {fileID: 281884611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &149904347
 GameObject:
   m_ObjectHideFlags: 0
@@ -27734,7 +27739,7 @@ MonoBehaviour:
   objectiveText: {fileID: 0}
   animator: {fileID: 0}
   pauseMenu: {fileID: 1603336741}
-  failedLevelText: {fileID: 0}
+  failedLevelText: {fileID: 144001951}
 --- !u!1001 &1481307958
 PrefabInstance:
   m_ObjectHideFlags: 0
