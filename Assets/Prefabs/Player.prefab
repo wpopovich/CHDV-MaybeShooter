@@ -130,11 +130,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe897ea44e32ec46ae187e88a21f68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cController: {fileID: 631609699}
   speed: 1.5
   runningSpeed: 3
+  sneakingSpeed: 0
+  currentSpeed: 0
   maxStamina: 100
   animator: {fileID: 831893011543407597}
-  cController: {fileID: 631609699}
+  worldCanvas: {fileID: 0}
+  interactButton: {fileID: 0}
   turnSmoothTime: 0.15
 --- !u!143 &631609699
 CharacterController:

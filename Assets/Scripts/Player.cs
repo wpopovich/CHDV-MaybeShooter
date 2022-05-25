@@ -197,6 +197,9 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f); // Para que la animación de la kill del player coordine con la animación de muerte del enemigo
 
         enemyToKill.GetComponent<Enemy>().Kill();
+
+        yield return new WaitForSeconds(0.5f);
+
         isAttacking = false;
         interactButton.SetActive(false);
     }
