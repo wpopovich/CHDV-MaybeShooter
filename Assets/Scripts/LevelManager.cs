@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
             Destroy(this);
 
         if (player == null)
-            Debug.LogError("GameManager player reference is not present!");
+            Debug.LogError("LevelManager player reference is not present!");
 
         audioSource.clip = alarmSound;
     }
