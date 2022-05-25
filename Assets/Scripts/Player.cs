@@ -199,6 +199,7 @@ public class Player : MonoBehaviour
 
         enemyToKill.GetComponent<Enemy>().Kill();
         isAttacking = false;
+        interactButton.SetActive(false);
     }
 
     public IEnumerator InteractWithComputer(Collider interactableObjective)
@@ -212,6 +213,7 @@ public class Player : MonoBehaviour
         interactableObjective.GetComponent<InteractableObjective>().CompleteObjective();
         isInteracting = false;
         worldCanvas.SetActive(false);
+        interactButton.SetActive(false);
     }
 
     void LockPlayerMovemementIfIsInteracting()
