@@ -123,7 +123,6 @@ public class Player : MonoBehaviour
             if (Input.GetAxisRaw("Interact") > 0) {
                 Enemy enemy = other.GetComponent<Enemy>();
                 enemy.Kill();
-                Debug.Log("Killing");
             }
         }
     }

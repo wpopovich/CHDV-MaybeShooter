@@ -56,7 +56,7 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 10
   visionLight: {fileID: 7821668843747281971}
-  timeForAlarm: 0
+  timeForAlarm: 3
 --- !u!65 &3319972365602928078
 BoxCollider:
   m_ObjectHideFlags: 0

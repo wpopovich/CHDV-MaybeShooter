@@ -52,13 +52,19 @@ public abstract class Enemy : MonoBehaviour
     {
         playerInVisionCone = false;
         LevelManager manager = LevelManager.GetInstance();
+        if (manager == null)
+            return; 
+
         Player player = manager.Player();
         if (Vector3.Distance(player.transform.position, gameObject.transform.position) <= visionRange) {
-            Debug.DrawLine(gameObject.transform.position, player.transform.position, Color.red);
-            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward, Color.black);
             Vector3 direction = transform.position - player.transform.position;;
             if (Vector3.Angle(-1 * transform.forward, direction) <= visionAngle) {
-                playerInVisionCone = true;
+                RaycastHit hit;
+                Ray ray = new Ray(transform.position, -1 * direction);
+                Physics.Raycast(ray, out hit, visionRange);
+                if (hit.transform != null && hit.transform.CompareTag("Player")) {
+                    playerInVisionCone = true;
+                }
             }
         }
     }

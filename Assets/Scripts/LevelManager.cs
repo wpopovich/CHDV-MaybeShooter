@@ -73,6 +73,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Stop Alarm");
         audioSource.mute = true;
         activeAlarm = false;
+        alarmCounter = 0;
     }
 
     public void Detected()
