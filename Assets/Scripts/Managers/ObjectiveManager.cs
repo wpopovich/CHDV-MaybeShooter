@@ -48,8 +48,8 @@ public class ObjectiveManager : MonoBehaviour
         }
 
         successTextTimer += Time.deltaTime;
-        if (successTextTimer >= successTextMaxShowTime)
-            objectiveSuccesText.gameObject.SetActive(false);
+        //if (successTextTimer >= successTextMaxShowTime)
+            //objectiveSuccesText.gameObject.SetActive(false);
 
     }
     void UpdateObjectiveDescription(GameObject objective)
@@ -76,7 +76,6 @@ public class ObjectiveManager : MonoBehaviour
 
     private void EnableExit()
     {
-        Debug.Log("The world exit has been enabled, you may proceed to the next lvl");
         worldExit.OpenDoors();
     }
 

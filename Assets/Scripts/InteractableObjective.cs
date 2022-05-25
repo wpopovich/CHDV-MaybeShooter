@@ -19,7 +19,7 @@ public class InteractableObjective : MonoBehaviour
             return;
 
         Debug.Log(objective.completedText);
-        ObjectiveManager.GetInstance().ShowSuccessText(objective.completedText);
+        //ObjectiveManager.GetInstance().ShowSuccessText(objective.completedText);
         PlaySound();
         completed = true;
     }

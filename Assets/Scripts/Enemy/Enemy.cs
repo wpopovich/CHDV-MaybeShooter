@@ -9,17 +9,15 @@ public abstract class Enemy : MonoBehaviour
 
     protected Animator animator;
     protected bool isDead;
-    protected AudioSource audioSource;
 
     protected void InitEnemy()
     {
         animator = GetComponentInChildren<Animator>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     protected void KillEnemy(bool shouldKill)
     {
-        if (shouldKill) {
+        if (shouldKill){
             AnimateDeath();
             isDead = true;
             killed = false;
@@ -37,6 +35,6 @@ public abstract class Enemy : MonoBehaviour
     public void Kill()
     {
         killed = true;
-        audioSource.Play();
+        FindObjectOfType<AudioManager>().Play("EnemyDeath");
     }
 }
