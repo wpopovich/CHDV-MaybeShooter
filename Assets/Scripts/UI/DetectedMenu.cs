@@ -5,21 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class DetectedMenu : MonoBehaviour
 {
+    public GameObject failedText;
     public void Retry()
     {
-        Scene scene = SceneManager.GetActiveScene();
         Time.timeScale = 1;
-        SceneManager.LoadScene(scene.name);
+        SceneLoader.GetInstance().RestartScene();
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneLoader.GetInstance().LoadMainMenu();
     }
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowFailedText()
+    {
+        failedText.SetActive(true);
     }
 }
