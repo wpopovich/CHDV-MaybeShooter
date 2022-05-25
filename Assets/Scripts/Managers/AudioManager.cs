@@ -9,9 +9,20 @@ public class AudioManager : MonoBehaviour
     //public AudioClip music;
 
     public Sound[] sounds;
+    public static AudioManager instance;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -21,15 +32,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        StartCoroutine(PlayMainMenuMusic());
+    }
+
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
     }
 
-    private void Start()
+    public void Pause(string name)
     {
-        StartCoroutine(PlayMainMenuMusic());
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Pause();
     }
     
     public IEnumerator PlayMainMenuMusic()
@@ -37,15 +54,5 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         Play("MainMenuMusic");
-    }
-
-    public void PlayPointerEnterSound()
-    {
-        Play("PointerEnter");
-    }
-
-    public void PlayPointerClickSound()
-    {
-        Play("PointerClick");
     }
 }

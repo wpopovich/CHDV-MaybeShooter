@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: LocationIntel 1
   m_EditorClassIdentifier: 
   objectiveType: 0
-  objectiveText: Retrieve the Intel!
+  objectiveText: Retrieve the Intel
   completedText: Next objective location retrieved!
+  audioClip: {fileID: 0}
