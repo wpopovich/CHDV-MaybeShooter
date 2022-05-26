@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
     public GameObject CinematicCamera;
     public GameObject mainMenu;
 
+    public static bool cinematicHasFinished;
+
     private void Start()
     {
         StartCoroutine(DoCinematic());
@@ -26,6 +28,7 @@ public class CameraManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         mainMenu.SetActive(true);
+        cinematicHasFinished = true;
     }
 
     public void ChangeToControlsCamera()

@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     public CharacterController cController;
+    float gravity = -9.81f;
+    Vector3 velocity;
 
     public float speed;
     public float runningSpeed;
@@ -37,7 +39,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (!LevelManager.GetInstance().gameOver) {
+        if (!LevelManager.GetInstance().gameOver)
+        {
             Movement();
         }
     }
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
     void Movement()
     {
         LockPlayerMovemementIfIsInteracting();
+        DoGravity();
 
         // Movimiento básico
 
@@ -184,6 +188,12 @@ public class Player : MonoBehaviour
         {
             currentSpeed = 0;
         }
+    }
+
+    void DoGravity()
+    {
+        velocity.y += gravity * Time.deltaTime;
+        cController.Move(velocity * Time.deltaTime);
     }
 
     public void OnTriggerEnter(Collider other)

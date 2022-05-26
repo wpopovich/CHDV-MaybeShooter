@@ -9,7 +9,8 @@ public class SceneLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime;
     public static SceneLoader instance;
-    public Button playButton;
+    Button playButton;
+    
 
     private void Start()
     {
@@ -24,12 +25,8 @@ public class SceneLoader : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += onSceneLoad;
-
+        
         SetupCrossFade();
-
-        Button btn = playButton.GetComponent<Button>();
-        btn.onClick.AddListener(LoadNextScene);
-        btn.onClick.AddListener(DisableButtonInteraction);
     }
 
     private void onSceneLoad(Scene scene, LoadSceneMode loadMode)
@@ -52,6 +49,11 @@ public class SceneLoader : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LoadNextScene();
+        }
+
+        if (CameraManager.cinematicHasFinished && activeSceneIsMainMenu())
+        {
+            SetupPlayButton();
         }
     }
 
@@ -97,8 +99,19 @@ public class SceneLoader : MonoBehaviour
 
     public void DisableButtonInteraction()
     {
-        Button btn = playButton.GetComponent<Button>();
+        Button button = playButton.GetComponent<Button>();
 
-        btn.interactable = false;
+        button.interactable = false;
+    }
+
+    void SetupPlayButton()
+    {
+        playButton = GameObject.Find("PlayButton").GetComponent<Button>();
+        playButton.onClick.AddListener(LoadNextScene);
+    }
+
+    bool activeSceneIsMainMenu()
+    {
+        return SceneManager.GetActiveScene().buildIndex == 0;
     }
 }    

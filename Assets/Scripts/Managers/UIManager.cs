@@ -47,6 +47,4 @@ public class UIManager : MonoBehaviour
     {
         LevelManager.GetInstance().onGameOver -= ShowGameOverMenu;
     }
-
-    
 }
