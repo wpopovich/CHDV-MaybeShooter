@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4505778967708858}
   - component: {fileID: 33816968405010650}
   - component: {fileID: 23452428756662670}
-  - component: {fileID: 64039323594180402}
+  - component: {fileID: 9117864918290876394}
   m_Layer: 0
   m_Name: Console_01_snaps002
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64039323594180402
-MeshCollider:
+--- !u!65 &9117864918290876394
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,10 +94,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 7b79fe2053abba84e856ee9f253da0b5, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 0.5000001, y: 1.311408, z: 0.7796518}
+  m_Center: {x: 0, y: 0.718204, z: 0.020653253}
 --- !u!1 &6507366325120310039
 GameObject:
   m_ObjectHideFlags: 0

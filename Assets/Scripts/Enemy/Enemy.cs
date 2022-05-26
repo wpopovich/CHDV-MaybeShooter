@@ -13,6 +13,8 @@ public abstract class Enemy : MonoBehaviour
     protected AudioSource audioSource;
     protected bool playerInVisionCone;
 
+    public Transform eyesPosition;
+
     protected void InitEnemy()
     {
         animator = GetComponentInChildren<Animator>();
@@ -60,7 +62,7 @@ public abstract class Enemy : MonoBehaviour
             Vector3 direction = transform.position - player.transform.position;;
             if (Vector3.Angle(-1 * transform.forward, direction) <= visionAngle) {
                 RaycastHit hit;
-                Ray ray = new Ray(transform.position, -1 * direction);
+                Ray ray = new Ray(eyesPosition.position, -1 * direction);
                 Physics.Raycast(ray, out hit, visionRange);
                 if (hit.transform != null && hit.transform.CompareTag("Player")) {
                     playerInVisionCone = true;
