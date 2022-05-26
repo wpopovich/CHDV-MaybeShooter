@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e21454d0064314eb046d942cb01701, type: 3}
   m_Name: LootableKeycard
   m_EditorClassIdentifier: 
-  objectiveType: 0
-  objectiveText: 
+  objectiveType: 2
+  objectiveText: Loot key from enemy
   completedText: 
+  pickupType: 0
   audioClip: {fileID: 0}
