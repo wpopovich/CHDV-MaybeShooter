@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime;
     public static SceneLoader instance;
+    public Button playButton;
 
     private void Start()
     {
@@ -24,6 +26,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.sceneLoaded += onSceneLoad;
 
         SetupCrossFade();
+
+        Button btn = playButton.GetComponent<Button>();
+        btn.onClick.AddListener(LoadNextScene);
+        btn.onClick.AddListener(DisableButtonInteraction);
     }
 
     private void onSceneLoad(Scene scene, LoadSceneMode loadMode)
@@ -35,7 +41,8 @@ public class SceneLoader : MonoBehaviour
     {
         GameObject crossfade = GameObject.FindWithTag("Crossfade");
 
-        if (crossfade != null) {
+        if (crossfade != null)
+        {
             transition = crossfade.GetComponent<Animator>();
         }
     }
@@ -87,4 +94,11 @@ public class SceneLoader : MonoBehaviour
     {
         return instance;
     }
-}
+
+    public void DisableButtonInteraction()
+    {
+        Button btn = playButton.GetComponent<Button>();
+
+        btn.interactable = false;
+    }
+}    

@@ -52,7 +52,7 @@ MonoBehaviour:
   visionRange: 10
   visionAngle: 15
   waypointList: []
-  timeToWait: 10
+  timeToWait: 5
   speed: 2
   rotationSpeed: 10
   visionLight: {fileID: 7821668843747281971}
