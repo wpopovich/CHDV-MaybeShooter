@@ -5171,6 +5171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3822892701417673465, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
 --- !u!1001 &578779570
@@ -5686,6 +5690,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe897ea44e32ec46ae187e88a21f68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &631609703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631609698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3572b1fc6d7ef43a1cb75f05907158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!4 &649726851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4131454452211634, guid: b12c4c105828040468dcc041ca32ce5e, type: 3}
@@ -13724,6 +13741,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1703089204}
     - target: {fileID: 831893011543407587, guid: e25557cbaffd6814880f2618acc492ee, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 631609703}
+    - target: {fileID: 831893011543407587, guid: e25557cbaffd6814880f2618acc492ee, type: 3}
       propertyPath: runningCooldown
       value: 5
       objectReference: {fileID: 0}
@@ -14696,7 +14717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 422665534971791255, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: m_Name
-      value: PatrollingEnemy (4)
+      value: ObjectivePatrollingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 2408932478347375410, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
       propertyPath: timeToWait
@@ -14766,6 +14787,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3822892701417673465, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 5195d06444649d54f9a0076f7732b160, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
 --- !u!4 &1915666292 stripped
@@ -15720,6 +15745,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2093892372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 422665534971791255, guid: b96e4267b26b9aa47a30412bef3190fa, type: 3}
+  m_PrefabInstance: {fileID: 1912375781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2093892379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093892372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7700a5bbc523fba4bb260638639c8a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objective: {fileID: 11400000, guid: 31c683ecc97f2054a93edc5f7ba9e0b3, type: 2}
+  completed: 0
 --- !u!1001 &2099340810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16153,7 +16197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3132153484900224734, guid: ff0231706890ea14ea1538034df2dcac, type: 3}
       propertyPath: objectives.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3132153484900224734, guid: ff0231706890ea14ea1538034df2dcac, type: 3}
       propertyPath: nextObjectiveIndicator
@@ -16170,7 +16214,7 @@ PrefabInstance:
     - target: {fileID: 3132153484900224734, guid: ff0231706890ea14ea1538034df2dcac, type: 3}
       propertyPath: objectives.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2093892379}
     - target: {fileID: 3132153484900224734, guid: ff0231706890ea14ea1538034df2dcac, type: 3}
       propertyPath: objectives.Array.data[2]
       value: 
