@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
     void GameOver()
     {
         if (!gameOver) {
-            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            //pauseMenu.SetActive(!pauseMenu.activeSelf);
             gameOver = true;
             onGameOver?.Invoke();
             Debug.Log("GameOver");

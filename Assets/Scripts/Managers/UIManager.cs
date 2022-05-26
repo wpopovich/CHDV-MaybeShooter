@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
     public Image foregroundStaminaBar;
     public Text objectiveText;
     public Animator animator;
+    public GameObject gameOverText;
     public GameObject pauseMenu;
-    public GameObject failedLevelText;
 
     private void Start()
     {
@@ -38,8 +38,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowGameOverMenu() {
-        pauseMenu.SetActive(true);
-        failedLevelText.SetActive(true);
+        gameOverText.SetActive(true);
         Time.timeScale = 0;
     }
 
