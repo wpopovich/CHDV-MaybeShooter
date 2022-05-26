@@ -5,12 +5,12 @@ using UnityEngine;
 public class StaticEnemy : Enemy
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         InitEnemy();
     }
 
-    void Update()
+    protected override void Update()
     {
         if (isDead)
             return;

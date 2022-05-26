@@ -15,6 +15,16 @@ public abstract class Enemy : MonoBehaviour
 
     public Transform eyesPosition;
 
+    protected virtual void Start()
+    {
+
+    }
+
+    protected virtual void Update()
+    {
+
+    }
+
     protected void InitEnemy()
     {
         animator = GetComponentInChildren<Animator>();

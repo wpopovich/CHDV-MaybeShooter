@@ -16,7 +16,7 @@ public class MainMenuEnemy : Enemy
     private float waitingTime;
 
 
-    void Start()
+    protected override void Start()
     {
         InitEnemy();
 
@@ -32,7 +32,7 @@ public class MainMenuEnemy : Enemy
         transform.position = initialWaypoint.position;
     }
 
-    void Update()
+    protected override void Update()
     {
         if (arrived)
         {

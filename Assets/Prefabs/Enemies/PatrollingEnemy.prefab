@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3319972365602928078}
   - component: {fileID: 6475142786723524473}
   - component: {fileID: 4926171343510148999}
+  - component: {fileID: 3822892701417673465}
   m_Layer: 0
   m_Name: PatrollingEnemy
   m_TagString: Enemy
@@ -181,6 +182,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3822892701417673465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422665534971791255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3572b1fc6d7ef43a1cb75f05907158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1 &5606715435537323643
 GameObject:
   m_ObjectHideFlags: 0
