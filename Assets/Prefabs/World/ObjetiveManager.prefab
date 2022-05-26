@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectives: []
+  worldExit: {fileID: 0}
+  nextObjectiveIndicator: {fileID: 6292631290576280916, guid: 1b19c8fbd13399b4c963d10b4b039c4f, type: 3}
+  objectiveText: {fileID: 0}
+  objectiveSuccesText: {fileID: 0}
+  successTextMaxShowTime: 0

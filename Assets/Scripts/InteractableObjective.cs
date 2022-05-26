@@ -11,6 +11,10 @@ public class InteractableObjective : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null) {
+            Debug.LogError(gameObject.name + " doesn't have an associated audioSource for completion sounds");
+        }
     }
 
     public void CompleteObjective()
@@ -25,7 +29,7 @@ public class InteractableObjective : MonoBehaviour
 
     void PlaySound()
     {
-        if (objective.audioClip != null) {
+        if (objective.audioClip != null && audioSource != null) {
             audioSource.clip = objective.audioClip;
             audioSource.Play();
         }
