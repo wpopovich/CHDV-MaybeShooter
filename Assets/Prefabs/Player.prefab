@@ -133,9 +133,8 @@ MonoBehaviour:
   cController: {fileID: 0}
   speed: 1.5
   runningSpeed: 2.3
-  sneakingSpeed: 1
   currentSpeed: 0
-  maxStamina: 100000
+  maxStamina: 100
   animator: {fileID: 831893011543407597}
   worldCanvas: {fileID: 0}
   interactButton: {fileID: 0}

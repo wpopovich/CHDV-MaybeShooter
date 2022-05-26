@@ -9,16 +9,14 @@ public class Player : MonoBehaviour
 
     public float speed;
     public float runningSpeed;
-    public float sneakingSpeed;
     public float currentSpeed;
     public float maxStamina = 100;
     public static float currentStamina;
 
     public Animator animator;
     bool isAttacking = false;
-    bool isInteracting = false;
-    bool isCrouching = false;
     bool isRunning;
+    bool isInteracting = false;
 
     public GameObject worldCanvas;
     public GameObject interactButton;
@@ -66,31 +64,15 @@ public class Player : MonoBehaviour
             cController.Move(movement * speed * Time.deltaTime);
         }
 
-        // Running/walking/sneaking
+        // Running/walking
 
         if (Input.GetAxisRaw("Run") > 0 && movement != Vector3.zero && currentStamina > 0) // Si el player está corriendo
         {
             Run();
         }
-        else if (isCrouching == false)
-        {
-            Walk();
-        }
         else
         {
-            Sneaking();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (isCrouching == false)
-            {
-                isCrouching = true;
-            }
-            else
-            {
-                isCrouching = false;
-            }
+            Walk();
         }
 
         if (movement == Vector3.zero && currentStamina <= maxStamina) // Si el player está quieto, regenera su stamina
@@ -105,31 +87,13 @@ public class Player : MonoBehaviour
 
         // Animator
 
-        if (movement != Vector3.zero && isCrouching == false) // Player se está moviendo
+        if (movement != Vector3.zero) // Player se está moviendo
         {
             animator.SetBool("IsWalking", true);
         }
         else // Player no se está moviendo
         {
             animator.SetBool("IsWalking", false);
-        }
-
-        if (isCrouching == true)
-        {
-            animator.SetBool("isCrouching", true);
-        }
-        else
-        {
-            animator.SetBool("isCrouching", false);
-        }
-
-        if (movement != Vector3.zero && isCrouching == true)
-        {
-            animator.SetBool("isSneaking", true);
-        }
-        else
-        {
-            animator.SetBool("isSneaking", false);
         }
 
         if (isRunning == true)
@@ -149,19 +113,12 @@ public class Player : MonoBehaviour
         currentSpeed = runningSpeed;
         currentStamina -= 32f * Time.deltaTime;
         isRunning = true;
-        isCrouching = false;
     }
 
     void Walk()
     {
         currentSpeed = speed;
         isRunning = false;
-    }
-
-    void Sneaking()
-    {
-        isCrouching = true;
-        currentSpeed = sneakingSpeed;
     }
 
     void RegenerateStamina()
