@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableObjective : MonoBehaviour
@@ -13,7 +11,8 @@ public class InteractableObjective : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        if (audioSource == null) {
+        if (audioSource == null)
+        {
             Debug.LogError(gameObject.name + " doesn't have an associated audioSource for completion sounds");
         }
     }
@@ -23,11 +22,14 @@ public class InteractableObjective : MonoBehaviour
         if (isCompleted())
             return;
 
-        
+
         Debug.Log(objective.completedText);
         PlaySound();
         completed = true;
-        ResetProgressBar();
+        if (progressBar != null) // En caso de que el objetivo no necesite de una ProgressBar
+        {
+            ResetProgressBar();
+        }
     }
 
     public void ChargeProgressBar()
@@ -42,7 +44,8 @@ public class InteractableObjective : MonoBehaviour
 
     void PlaySound()
     {
-        if (objective.audioClip != null && audioSource != null) {
+        if (objective.audioClip != null && audioSource != null)
+        {
             audioSource.clip = objective.audioClip;
             audioSource.Play();
         }

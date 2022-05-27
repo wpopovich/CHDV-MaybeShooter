@@ -17,11 +17,10 @@ public class Player : MonoBehaviour
     public static float currentStamina;
 
     public Animator animator;
-    bool isAttacking = false;
+    bool isAttacking;
     bool isRunning;
-    bool isInteracting = false;
+    bool isInteracting;
 
-    public GameObject worldCanvas;
     public GameObject interactButton;
 
     public float turnSmoothTime = 0.25f;
@@ -95,7 +94,7 @@ public class Player : MonoBehaviour
             animator.SetBool("IsWalking", false);
         }
 
-        if (isRunning == true)
+        if (isRunning)
         {
             animator.SetBool("IsRunning", true);
         }

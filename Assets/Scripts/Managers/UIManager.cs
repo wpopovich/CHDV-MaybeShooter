@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image foregroundStaminaBar;
+    public Image backgroundDetectedClock;
+    public GameObject detectedClock;
+
     public Text objectiveText;
-    public Animator animator;
     public GameObject gameOverText;
     public GameObject pauseMenu;
 
@@ -19,6 +21,15 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         foregroundStaminaBar.fillAmount = Player.currentStamina / 100;
+
+        if (LevelManager.activeAlarm)
+        {
+            ShowDetectedClock();
+        }
+        else
+        {
+            HideDetectedClock();
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePauseMenu();
@@ -46,4 +57,17 @@ public class UIManager : MonoBehaviour
     {
         LevelManager.GetInstance().onGameOver -= ShowGameOverMenu;
     }
+
+    void ShowDetectedClock()
+    {
+        detectedClock.SetActive(true);
+        backgroundDetectedClock.fillAmount -= Time.deltaTime / LevelManager.timeBeforeEndGame;
+    }
+
+    void HideDetectedClock()
+    {
+        backgroundDetectedClock.fillAmount = 1;
+        detectedClock.SetActive(false);
+    }
+
 }

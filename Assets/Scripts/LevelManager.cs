@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-    public float timeBeforeEndGame;
+    public static float timeBeforeEndGame = 3f;
+
     public event Action onGameOver;
 
     [SerializeField]
@@ -24,9 +26,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
 
-    private float alarmCounter;
-    private bool activeAlarm;
+    public float alarmCounter;
+    public static bool activeAlarm;
     public bool gameOver = false;
+
     public static LevelManager GetInstance()
     {
         return instance;

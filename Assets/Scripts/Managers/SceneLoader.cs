@@ -10,7 +10,6 @@ public class SceneLoader : MonoBehaviour
     public float transitionTime;
     public static SceneLoader instance;
     Button playButton;
-    
 
     private void Start()
     {
@@ -83,7 +82,7 @@ public class SceneLoader : MonoBehaviour
 
     public void RestartScene()
     {
-        TriggerSceneLoad(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void ExitGame()
