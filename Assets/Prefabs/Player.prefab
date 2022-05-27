@@ -76,7 +76,8 @@ GameObject:
   - component: {fileID: 831893011543407587}
   - component: {fileID: 631609699}
   - component: {fileID: 631609703}
-  - component: {fileID: 1865942853183535259}
+  - component: {fileID: 813344130325333665}
+  - component: {fileID: 6582272176933312673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cController: {fileID: 0}
-  playerInventory: {fileID: 1865942853183535259}
+  playerInventory: {fileID: 0}
   speed: 1.5
   runningSpeed: 2.3
   currentSpeed: 0
@@ -171,7 +172,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1.28, z: 0.69}
   m_Center: {x: 0, y: 0.81, z: 0}
---- !u!114 &1865942853183535259
+--- !u!81 &813344130325333665
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525253854236285681}
+  m_Enabled: 1
+--- !u!114 &6582272176933312673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
