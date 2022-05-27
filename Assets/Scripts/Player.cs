@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public CharacterController cController;
     float gravity = -9.81f;
     Vector3 velocity;
+    public Inventory playerInventory;
 
     public float speed;
     public float runningSpeed;
@@ -158,6 +159,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f); // Para que la animación de la kill del player coordine con la animación de muerte del enemigo
 
         enemyToKill.GetComponent<Enemy>().Kill();
+        InventoryItem lootedItem = enemyToKill.GetComponent<Inventory>().LootInventory();
+        playerInventory.SetInventory(lootedItem);
+
+        InteractableObjective objective = enemyToKill.GetComponent<InteractableObjective>();
+        if (objective != null)
+            objective.GetComponent<InteractableObjective>().CompleteObjective();
 
         yield return new WaitForSeconds(0.5f);
 
