@@ -38,7 +38,6 @@ public class ObjectiveManager : MonoBehaviour
                 UpdateObjectiveDescription(currentObjective);
             }
             List<InteractableObjective> completedObjectives = objectives.FindAll(obj => obj.isCompleted());
-            Debug.Log(completedObjectives.Count);
             completedObjectives.ForEach(o => {
                 Debug.Log(o.name);
                 Debug.Log(o.isCompleted());
