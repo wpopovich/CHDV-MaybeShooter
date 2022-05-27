@@ -24,18 +24,12 @@ public class Player : MonoBehaviour
     public GameObject worldCanvas;
     public GameObject interactButton;
 
-    //public float taskDuration = 7f;
-    //float currentTaskTime;
-    //bool taskIsFinished = false;
-
     public float turnSmoothTime = 0.25f;
     float turnSmoothVelocity;
 
     void Start()
     {
         currentStamina = maxStamina;
-        //currentTaskTime = taskDuration;
-
     }
 
     void Update()
@@ -133,7 +127,7 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Objective"))
+        if (other.CompareTag("Enemy") || (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other)))
         {
             interactButton.SetActive(true);
         }
@@ -144,9 +138,9 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(KillEnemy(other));
             }
-            else if (other.CompareTag("Objective"))
+            else if (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other))
             {
-                StartCoroutine(InteractWithComputer(other));
+                StartCoroutine(InteractWithObjective(other));
             }
         }
     }
@@ -172,19 +166,23 @@ public class Player : MonoBehaviour
         interactButton.SetActive(false);
     }
 
-    public IEnumerator InteractWithComputer(Collider interactableObjective)
+    public IEnumerator InteractWithObjective(Collider interactableObjective)
     {
         animator.SetTrigger("Interact");
         isInteracting = true;
-        worldCanvas.SetActive(true);
+        interactableObjective.GetComponent<InteractableObjective>().ChargeProgressBar();
 
         yield return new WaitForSeconds(7.3f);
 
         Debug.Log(interactableObjective.name);
         interactableObjective.GetComponent<InteractableObjective>().CompleteObjective();
         isInteracting = false;
-        worldCanvas.SetActive(false);
         interactButton.SetActive(false);
+    }
+
+    public bool hasObjectiveBeenCompleted(Collider objective)
+    {
+        return objective.GetComponent<InteractableObjective>().completed;
     }
 
     void LockPlayerMovemementIfIsInteracting()

@@ -7,6 +7,7 @@ public class InteractableObjective : MonoBehaviour
     public ObjectiveScript objective;
     public bool completed = false;
     private AudioSource audioSource;
+    public GameObject progressBar;
 
     private void Start()
     {
@@ -22,9 +23,21 @@ public class InteractableObjective : MonoBehaviour
         if (isCompleted())
             return;
 
+        
         Debug.Log(objective.completedText);
         PlaySound();
         completed = true;
+        ResetProgressBar();
+    }
+
+    public void ChargeProgressBar()
+    {
+        progressBar.SetActive(true);
+    }
+
+    public void ResetProgressBar()
+    {
+        progressBar.SetActive(false);
     }
 
     void PlaySound()
