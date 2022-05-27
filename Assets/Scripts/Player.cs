@@ -127,7 +127,9 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") || (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other)) || (other.CompareTag("Door") && !doorIsOpened))
+        if (other.CompareTag("Enemy") || 
+            (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other) && ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject)) || 
+            (other.CompareTag("Door") && !doorIsOpened))
         {
             ShowInteractableButton(true);
         }
@@ -138,7 +140,8 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(KillEnemy(other));
             }
-            else if (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other))
+            else if (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other) && 
+                ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject))
             {
                 StartCoroutine(InteractWithObjective(other));
             }
@@ -171,7 +174,7 @@ public class Player : MonoBehaviour
     }
 
     public IEnumerator InteractWithObjective(Collider interactableObjective)
-    {
+    {       
         animator.SetTrigger("Interact");
         isInteracting = true;
         interactableObjective.GetComponent<InteractableObjective>().ChargeProgressBar();
