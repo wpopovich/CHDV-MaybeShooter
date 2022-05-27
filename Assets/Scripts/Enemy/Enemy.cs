@@ -52,7 +52,7 @@ public abstract class Enemy : MonoBehaviour
     public void Kill()
     {
         killed = true;
-        audioSource.Play();
+        FindObjectOfType<AudioManager>().Play("EnemyDeath");
     }
 
     protected virtual void OnKill()

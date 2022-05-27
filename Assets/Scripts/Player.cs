@@ -193,6 +193,7 @@ public class Player : MonoBehaviour
         doorAnimator.SetBool("doorIsOpened", true);
         doorIsOpened = true;
         ShowInteractableButton(false);
+        FindObjectOfType<AudioManager>().Play("DoorOpening");
     }
 
     public bool hasObjectiveBeenCompleted(Collider objective)

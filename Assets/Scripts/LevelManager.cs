@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     private GameObject pauseMenu;
 
     public float alarmCounter;
-    public static bool activeAlarm;
+    public bool activeAlarm;
     public bool gameOver = false;
 
     public static LevelManager GetInstance()
@@ -86,7 +86,6 @@ public class LevelManager : MonoBehaviour
     void GameOver()
     {
         if (!gameOver) {
-            //pauseMenu.SetActive(!pauseMenu.activeSelf);
             gameOver = true;
             onGameOver?.Invoke();
             Debug.Log("GameOver");

@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject detectedClock;
 
     public Text objectiveText;
-    public GameObject gameOverText;
+    public GameObject gameOverMenu;
     public GameObject pauseMenu;
 
     private void Start()
@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     {
         foregroundStaminaBar.fillAmount = Player.currentStamina / 100;
 
-        if (LevelManager.activeAlarm)
+        if (LevelManager.GetInstance().activeAlarm)
         {
             ShowDetectedClock();
         }
@@ -49,7 +49,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowGameOverMenu() {
-        gameOverText.SetActive(true);
+        Debug.Log("ShowGameOverMenu");
+        gameOverMenu.SetActive(true);
         Time.timeScale = 0;
     }
 

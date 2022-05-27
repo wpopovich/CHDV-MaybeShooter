@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6161481095371989437}
   - component: {fileID: 6161481095371989439}
-  - component: {fileID: 6161481095371989436}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -65,11 +64,3 @@ MonoBehaviour:
     volume: 1
     loop: 0
     source: {fileID: 0}
---- !u!81 &6161481095371989436
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161481095371989438}
-  m_Enabled: 1
