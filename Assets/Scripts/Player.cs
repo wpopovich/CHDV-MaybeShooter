@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     bool isAttacking;
     bool isRunning;
     bool isInteracting;
+    bool doorIsOpened;
 
     public GameObject interactButton;
 
@@ -126,9 +127,9 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") || (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other)))
+        if (other.CompareTag("Enemy") || (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other)) || (other.CompareTag("Door") && !doorIsOpened))
         {
-            interactButton.SetActive(true);
+            ShowInteractableButton(true);
         }
 
         if (Input.GetAxisRaw("Interact") > 0)
@@ -140,6 +141,10 @@ public class Player : MonoBehaviour
             else if (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other))
             {
                 StartCoroutine(InteractWithObjective(other));
+            }
+            else if (other.CompareTag("Door"))
+            {
+                OpenDoor(other);
             }
         }
     }
@@ -162,7 +167,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         isAttacking = false;
-        interactButton.SetActive(false);
+        ShowInteractableButton(false);
     }
 
     public IEnumerator InteractWithObjective(Collider interactableObjective)
@@ -170,13 +175,21 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Interact");
         isInteracting = true;
         interactableObjective.GetComponent<InteractableObjective>().ChargeProgressBar();
+        ShowInteractableButton(false);
 
-        yield return new WaitForSeconds(7.3f);
+        yield return new WaitForSeconds(7.3f); // Esperar a que termine la animación
 
         Debug.Log(interactableObjective.name);
         interactableObjective.GetComponent<InteractableObjective>().CompleteObjective();
         isInteracting = false;
-        interactButton.SetActive(false);
+    }
+
+    void OpenDoor(Collider door)
+    {
+        Animator doorAnimator = door.GetComponent<Animator>();
+        doorAnimator.SetBool("doorIsOpened", true);
+        doorIsOpened = true;
+        ShowInteractableButton(false);
     }
 
     public bool hasObjectiveBeenCompleted(Collider objective)
@@ -210,15 +223,15 @@ public class Player : MonoBehaviour
     
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Objective"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Objective") || other.CompareTag("Door"))
         {
-            interactButton.SetActive(false);
+            ShowInteractableButton(false);
         }
     }
 
-    void ShowInteractableButton()
+    void ShowInteractableButton(bool value)
     {
-        interactButton.SetActive(true);
+        interactButton.SetActive(value);
     }
 
     #endregion

@@ -131,12 +131,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cController: {fileID: 0}
+  playerInventory: {fileID: 0}
   speed: 1.5
   runningSpeed: 2.3
   currentSpeed: 0
   maxStamina: 100
   animator: {fileID: 831893011543407597}
-  worldCanvas: {fileID: 0}
   interactButton: {fileID: 0}
   turnSmoothTime: 0.15
 --- !u!143 &631609699
@@ -168,7 +168,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.86, z: 0.69}
+  m_Size: {x: 0.6, y: 1.28, z: 0.69}
   m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!1 &690273617656473062
 GameObject:

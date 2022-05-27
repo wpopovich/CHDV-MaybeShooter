@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - WorldExit
   - Crossfade
+  - Door
   layers:
   - Default
   - TransparentFX
