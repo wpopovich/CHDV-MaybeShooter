@@ -81,6 +81,11 @@ public class ObjectiveManager : MonoBehaviour
         worldExit.OpenDoors();
     }
 
+    public bool isCurrentObjective(GameObject maybeCurrentObjective)
+    {
+        return maybeCurrentObjective == currentObjective;
+    }
+
     public static ObjectiveManager GetInstance()
     {
         if (instance == null) {
