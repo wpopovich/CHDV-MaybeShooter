@@ -13,15 +13,16 @@ public class WorldExit : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void  OpenDoors()
     {
         animator.SetTrigger("Open");
         audioSource.Play();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) {
+            SceneLoader.GetInstance().LoadNextScene();
+        }
     }
 }
