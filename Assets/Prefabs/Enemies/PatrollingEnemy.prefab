@@ -52,12 +52,12 @@ MonoBehaviour:
   killed: 0
   visionRange: 10
   visionAngle: 15
+  visionLight: {fileID: 7821668843747281971}
   eyesPosition: {fileID: 4085787908747555399}
   waypointList: []
   timeToWait: 5
   speed: 2
   rotationSpeed: 10
-  visionLight: {fileID: 7821668843747281971}
   timeForAlarm: 3
 --- !u!65 &3319972365602928078
 BoxCollider:
@@ -213,7 +213,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

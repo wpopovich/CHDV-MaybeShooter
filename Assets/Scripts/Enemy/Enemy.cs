@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
     public bool killed = false;
     public float visionRange = 10;
     public float visionAngle = 15;
+    public Light visionLight;
 
     protected Animator animator;
     protected bool isDead;
@@ -57,7 +58,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void OnKill()
     {
-
+        visionLight.gameObject.SetActive(false);
     }
 
     protected void LookForPlayer()
