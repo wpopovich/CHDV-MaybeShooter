@@ -7,7 +7,7 @@ public class StaticEnemy : Enemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        InitEnemy();
+        base.Start();
     }
 
     protected override void Update()
@@ -16,6 +16,7 @@ public class StaticEnemy : Enemy
             return;
 
         KillEnemy(killed);
+        SearchForPlayer();
     }
 
 }
