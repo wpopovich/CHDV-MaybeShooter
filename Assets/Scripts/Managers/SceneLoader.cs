@@ -105,6 +105,7 @@ public class SceneLoader : MonoBehaviour
 
     void SetupPlayButton()
     {
+        
         playButton = GameObject.Find("PlayButton").GetComponent<Button>();
         playButton.onClick.AddListener(LoadNextScene);
     }

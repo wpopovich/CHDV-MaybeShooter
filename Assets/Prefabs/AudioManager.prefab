@@ -64,3 +64,8 @@ MonoBehaviour:
     volume: 1
     loop: 0
     source: {fileID: 0}
+  - name: DoorOpening
+    clip: {fileID: 8300000, guid: f6ebe7cf5f2484e4eb072330d3bb3896, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
