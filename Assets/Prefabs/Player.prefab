@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe897ea44e32ec46ae187e88a21f68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cController: {fileID: 0}
+  cController: {fileID: 631609699}
   playerInventory: {fileID: 6582272176933312673}
   speed: 1.5
   runningSpeed: 2.3
