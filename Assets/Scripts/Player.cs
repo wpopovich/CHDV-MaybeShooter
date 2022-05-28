@@ -45,9 +45,11 @@ public class Player : MonoBehaviour
             Movement();
         }
 
-        if (GetComponent<Inventory>().item != null)
+        InventoryItem item = GetComponent<Inventory>().item;
+
+        if (item != null)
         {
-            itemImage.sprite = GetComponent<Inventory>().item.itemIcon;
+            itemImage.sprite = item.itemIcon;
             //UIManager.GetInstance().ShowItemIcon(GetComponent<Inventory>().item.itemIcon);
         }
     }
