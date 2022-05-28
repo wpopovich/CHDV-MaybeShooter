@@ -8,17 +8,28 @@ public abstract class Enemy : MonoBehaviour
     public float visionRange = 10;
     public float visionAngle = 15;
     public Light visionLight;
+    public Transform eyesPosition;
+    public float timeForAlarm = 3;
 
     protected Animator animator;
     protected bool isDead;
     protected AudioSource audioSource;
     protected bool playerInVisionCone;
 
-    public Transform eyesPosition;
+    protected Color calm = Color.green;
+    protected Color alerted = Color.yellow;
+    protected Color detected = Color.red;
+    protected bool playerDetected;
+
+    protected float alarmTimer;
+
 
     protected virtual void Start()
     {
-
+        InitEnemy();
+        alarmTimer = 0;
+        playerDetected = false;
+        visionLight.color = calm;
     }
 
     protected virtual void Update()
@@ -59,6 +70,9 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void OnKill()
     {
         visionLight.gameObject.SetActive(false);
+
+        if (playerDetected)
+            LevelManager.GetInstance().StopAlarm();
     }
 
     protected void LookForPlayer()
@@ -79,6 +93,38 @@ public abstract class Enemy : MonoBehaviour
                     playerInVisionCone = true;
                 }
             }
+        }
+    }
+
+    protected void SearchForPlayer()
+    {
+        LookForPlayer();
+        DetectPlayer();
+        UpdateLightColor();
+    }
+
+    protected void DetectPlayer()
+    {
+        if (playerInVisionCone) {
+            alarmTimer += Time.deltaTime;
+            if (alarmTimer > timeForAlarm)
+                alarmTimer = timeForAlarm;
+        } else {
+            alarmTimer = Mathf.Max(0, alarmTimer - Time.deltaTime);
+        }
+
+        if (alarmTimer >= timeForAlarm) {
+            Debug.Log("PLayerDetected");
+            playerDetected = true;
+            LevelManager.GetInstance().Detected();
+        }
+    }
+    protected void UpdateLightColor()
+    {
+        if (playerInVisionCone) {
+            visionLight.color = Color.Lerp(visionLight.color, detected, Time.deltaTime);
+        } else {
+            visionLight.color = Color.Lerp(visionLight.color, calm, Time.deltaTime);
         }
     }
 
