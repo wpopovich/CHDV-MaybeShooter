@@ -8,7 +8,6 @@ public class MovingEnemy : Enemy
     public float timeToWait = 10;
     public float speed = 2;
     public float rotationSpeed = 10;
-    public Light visionLight;
     public float timeForAlarm;
 
     private IEnumerator<Transform> waypointEnumerator;
@@ -135,9 +134,11 @@ public class MovingEnemy : Enemy
 
     protected override void OnKill()
     {
+        base.OnKill();
+
         if (playerDetected)
             LevelManager.GetInstance().StopAlarm();
 
-        visionLight.gameObject.SetActive(false);
+        
     }
 }
