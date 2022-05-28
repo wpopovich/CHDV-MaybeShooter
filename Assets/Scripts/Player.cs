@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour
@@ -8,7 +9,9 @@ public class Player : MonoBehaviour
     public CharacterController cController;
     float gravity = -9.81f;
     Vector3 velocity;
+
     public Inventory playerInventory;
+    InventoryItem item;
 
     public float speed;
     public float runningSpeed;
@@ -24,6 +27,9 @@ public class Player : MonoBehaviour
 
     public GameObject interactButton;
 
+    [SerializeField]
+    Image itemImage;
+
     public float turnSmoothTime = 0.25f;
     float turnSmoothVelocity;
 
@@ -37,6 +43,12 @@ public class Player : MonoBehaviour
         if (!LevelManager.GetInstance().gameOver)
         {
             Movement();
+        }
+
+        if (GetComponent<Inventory>().item != null)
+        {
+            itemImage.sprite = GetComponent<Inventory>().item.itemIcon;
+            //UIManager.GetInstance().ShowItemIcon(GetComponent<Inventory>().item.itemIcon);
         }
     }
 
@@ -162,12 +174,13 @@ public class Player : MonoBehaviour
         enemyToKill.GetComponent<Enemy>().Kill();
         InventoryItem lootedItem = enemyToKill.GetComponent<Inventory>().LootInventory();
         playerInventory.SetInventory(lootedItem);
+        
 
         InteractableObjective objective = enemyToKill.GetComponent<InteractableObjective>();
         if (objective != null)
             objective.GetComponent<InteractableObjective>().CompleteObjective();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f); // Esperar a que termine la animación
 
         isAttacking = false;
         ShowInteractableButton(false);

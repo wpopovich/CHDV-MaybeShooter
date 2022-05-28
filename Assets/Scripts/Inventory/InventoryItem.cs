@@ -7,6 +7,7 @@ public class InventoryItem : ScriptableObject
 {
     [SerializeField]
     private ItemType itemType;
+    public Sprite itemIcon;
 
     public enum ItemType {
         KeyCard

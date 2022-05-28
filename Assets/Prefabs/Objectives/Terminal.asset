@@ -17,3 +17,4 @@ MonoBehaviour:
   completedText: 
   pickupType: 0
   audioClip: {fileID: 8300000, guid: d44f2c61920298a4190569e908db095f, type: 3}
+  itemIcon: {fileID: 21300000, guid: 4b0dd701d738e6f43876d5706a556bfb, type: 3}

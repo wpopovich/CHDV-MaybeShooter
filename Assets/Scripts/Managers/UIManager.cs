@@ -7,15 +7,24 @@ public class UIManager : MonoBehaviour
 {
     public Image foregroundStaminaBar;
     public Image backgroundDetectedClock;
+    public Image itemImage;
     public GameObject detectedClock;
 
     public Text objectiveText;
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
 
+    public Inventory playerInventory;
+    public InventoryItem item;
+    public static UIManager instance;
+
     private void Start()
     {
         LevelManager.GetInstance().onGameOver += ShowGameOverMenu;
+    }
+    public static UIManager GetInstance()
+    {
+        return instance;
     }
 
     private void Update()
@@ -71,4 +80,8 @@ public class UIManager : MonoBehaviour
         detectedClock.SetActive(false);
     }
 
+    public void ShowItemIcon(Sprite icon)
+    {
+        itemImage.sprite = icon;
+    }
 }

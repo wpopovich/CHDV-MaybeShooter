@@ -17,3 +17,4 @@ MonoBehaviour:
   completedText: 
   pickupType: 0
   audioClip: {fileID: 0}
+  itemIcon: {fileID: 0}
