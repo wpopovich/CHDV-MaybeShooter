@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cController: {fileID: 0}
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 6582272176933312673}
   speed: 1.5
   runningSpeed: 2.3
   currentSpeed: 0
