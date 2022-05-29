@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class InteractableObjective : MonoBehaviour
 {
+    public static Action<InteractableObjective> onComplete;
     public ObjectiveScript objective;
     public bool completed = false;
     private AudioSource audioSource;
@@ -26,6 +28,7 @@ public class InteractableObjective : MonoBehaviour
         Debug.Log(objective.completedText);
         PlaySound();
         completed = true;
+        onComplete?.Invoke(this);
         if (progressBar != null) // En caso de que el objetivo no necesite de una ProgressBar
         {
             ResetProgressBar();
