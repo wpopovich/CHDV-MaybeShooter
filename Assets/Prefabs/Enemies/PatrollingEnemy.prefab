@@ -54,11 +54,11 @@ MonoBehaviour:
   visionAngle: 15
   visionLight: {fileID: 7821668843747281971}
   eyesPosition: {fileID: 4085787908747555399}
+  timeForAlarm: 3
   waypointList: []
   timeToWait: 5
   speed: 2
   rotationSpeed: 10
-  timeForAlarm: 3
 --- !u!65 &3319972365602928078
 BoxCollider:
   m_ObjectHideFlags: 0

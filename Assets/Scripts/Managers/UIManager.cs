@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
     void ShowDetectedClock()
     {
         detectedClock.SetActive(true);
-        backgroundDetectedClock.fillAmount -= Time.deltaTime / LevelManager.timeBeforeEndGame;
+        backgroundDetectedClock.fillAmount -= Time.deltaTime / LevelManager.GetInstance().timeBeforeEndGame;
     }
 
     void HideDetectedClock()
@@ -80,8 +80,8 @@ public class UIManager : MonoBehaviour
         detectedClock.SetActive(false);
     }
 
-    public void ShowItemIcon(Sprite icon)
-    {
-        itemImage.sprite = icon;
-    }
+    //public void ShowItemIcon(Sprite icon)
+    //{
+    //    itemImage.sprite = icon;
+    //}
 }

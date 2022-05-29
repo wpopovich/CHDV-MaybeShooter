@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     {
         return instance;
     }
-
+    
     public void SetInventory(InventoryItem item)
     {
         if (item != null)
