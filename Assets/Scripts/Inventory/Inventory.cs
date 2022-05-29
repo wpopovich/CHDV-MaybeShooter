@@ -24,4 +24,9 @@ public class Inventory : MonoBehaviour
         if (item != null)
             this.item = item;
     }
+
+    public InventoryItem GetItem()
+    {
+        return item;
+    }
 }

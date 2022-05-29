@@ -14,12 +14,15 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
 
-    public Inventory playerInventory;
-    public InventoryItem item;
     public static UIManager instance;
 
     private void Start()
     {
+        if (instance == null) {
+            instance = this;
+        } else
+            Destroy(this);
+
         LevelManager.GetInstance().onGameOver += ShowGameOverMenu;
     }
     public static UIManager GetInstance()
@@ -80,8 +83,8 @@ public class UIManager : MonoBehaviour
         detectedClock.SetActive(false);
     }
 
-    //public void ShowItemIcon(Sprite icon)
-    //{
-    //    itemImage.sprite = icon;
-    //}
+    public void ShowItemIcon(Sprite icon)
+    {
+        itemImage.sprite = icon;
+    }
 }
