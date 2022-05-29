@@ -38,11 +38,6 @@ public class ObjectiveManager : MonoBehaviour
                 UpdateObjectiveDescription(currentObjective);
             }
             List<InteractableObjective> completedObjectives = objectives.FindAll(obj => obj.isCompleted());
-            completedObjectives.ForEach(o => {
-                Debug.Log(o.name);
-                Debug.Log(o.isCompleted());
-            });
-            
             if (completedObjectives.Count == objectives.Count) {
                 EnableExit();
                 SetCurrentObjective(worldExit.gameObject);

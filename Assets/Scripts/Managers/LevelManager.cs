@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     public float timeBeforeEndGame = 3f;
 
-    public event Action onGameOver;
+    public event Action<UIManager.GameOverReason> onGameOver;
 
     [SerializeField]
     private Player player;
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
             alarmCounter += Time.deltaTime;
 
         if (activeAlarm && alarmCounter >= timeBeforeEndGame) {
-            GameOver();
+            GameOver(UIManager.GameOverReason.Alarm);
         }
     }
 
@@ -80,11 +80,11 @@ public class LevelManager : MonoBehaviour
         PlayAlarm();
     }
 
-    void GameOver()
+    public void GameOver(UIManager.GameOverReason reason)
     {
         if (!gameOver) {
             gameOver = true;
-            onGameOver?.Invoke();
+            onGameOver?.Invoke(reason);
             Debug.Log("GameOver");
         }
     }

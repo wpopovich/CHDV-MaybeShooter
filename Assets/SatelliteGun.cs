@@ -20,4 +20,9 @@ public class SatelliteGun : MonoBehaviour
         particles.Play();
         audioSource.Play();
     }
+
+    private void OnDestroy()
+    {
+        InteractableObjective.onComplete -= Fire;
+    }
 }
