@@ -67,7 +67,13 @@ public class SceneLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(levelIndex);
+        if (levelIndex <= SceneManager.sceneCountInBuildSettings -1) {
+            SceneManager.LoadScene(levelIndex);
+        } else {
+            SceneManager.LoadScene(0);
+        }
+
+        
     }
 
     private void TriggerSceneLoad(int levelIndex)

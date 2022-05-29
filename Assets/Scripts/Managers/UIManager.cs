@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public enum GameOverReason
+    {
+        Alarm,
+        Boss
+    }
     public Image foregroundStaminaBar;
     public Image backgroundDetectedClock;
     public Image itemImage;
@@ -12,6 +17,8 @@ public class UIManager : MonoBehaviour
 
     public Text objectiveText;
     public GameObject gameOverMenu;
+    public GameObject alarmReason;
+    public GameObject bossReason;
     public GameObject pauseMenu;
 
     public static UIManager instance;
@@ -60,9 +67,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowGameOverMenu() {
+    public void ShowGameOverMenu(GameOverReason reason) {
         Debug.Log("ShowGameOverMenu");
-        gameOverMenu.SetActive(true);
+        if (reason == GameOverReason.Alarm) {
+            gameOverMenu.SetActive(true);
+            alarmReason.SetActive(true);
+        } else {
+            gameOverMenu.SetActive(true);
+            bossReason.SetActive(true);
+        }
+        
         Time.timeScale = 0;
     }
 
