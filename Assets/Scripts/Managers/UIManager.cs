@@ -80,8 +80,8 @@ public class UIManager : MonoBehaviour
         detectedClock.SetActive(false);
     }
 
-    public void ShowItemIcon(Sprite icon)
-    {
-        itemImage.sprite = icon;
-    }
+    //public void ShowItemIcon(Sprite icon)
+    //{
+    //    itemImage.sprite = icon;
+    //}
 }

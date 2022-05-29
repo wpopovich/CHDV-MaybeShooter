@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foregroundStaminaBar: {fileID: 9122926460849541723}
   backgroundDetectedClock: {fileID: 9122926461052850293}
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 3574137745294418655}
   detectedClock: {fileID: 9122926459819797040}
   objectiveText: {fileID: 9122926460557546160}
   gameOverMenu: {fileID: 9122926459590777122}
