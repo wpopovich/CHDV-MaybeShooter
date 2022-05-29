@@ -33,6 +33,11 @@ public class InteractableObjective : MonoBehaviour
         {
             ResetProgressBar();
         }
+
+        if (objective.name == "GeneratorObjective")
+        {
+            FindObjectOfType<GeneratorScript>().TurnOnGenerator();
+        }
     }
 
     public void ChargeProgressBar()

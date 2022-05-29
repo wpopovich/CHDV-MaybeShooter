@@ -134,9 +134,10 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") || 
-            (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other) && ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject)) || 
-            (other.CompareTag("Door") && !doorIsOpened))
+        if (other.CompareTag("Enemy") ||
+           (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other) && ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject)) ||
+           (other.CompareTag("Door") && !doorIsOpened) ||
+           (other.CompareTag("LooteableCrate") && !hasObjectiveBeenCompleted(other)))
         {
             ShowInteractableButton(true);
         }
@@ -147,10 +148,16 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(KillEnemy(other));
             }
-            else if (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other) && 
-                ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject))
+            else if (other.CompareTag("Objective") && !hasObjectiveBeenCompleted(other) &&
+                    ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject))
             {
                 StartCoroutine(InteractWithObjective(other));
+            }
+            else if (other.CompareTag("LooteableCrate") && !hasObjectiveBeenCompleted(other) &&
+                    ObjectiveManager.GetInstance().isCurrentObjective(other.gameObject))
+            {
+                StartCoroutine(LootCrate(other));
+
             }
             else if (other.CompareTag("Door"))
             {
@@ -163,6 +170,7 @@ public class Player : MonoBehaviour
     {
         animator.SetTrigger("Kill");
         isAttacking = true;
+        ShowInteractableButton(false);
 
         yield return new WaitForSeconds(0.3f); // Para que la animación de la kill del player coordine con la animación de muerte del enemigo
 
@@ -178,7 +186,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Esperar a que termine la animación
 
         isAttacking = false;
-        ShowInteractableButton(false);
     }
 
     public IEnumerator InteractWithObjective(Collider interactableObjective)
@@ -192,6 +199,24 @@ public class Player : MonoBehaviour
 
         Debug.Log(interactableObjective.name);
         interactableObjective.GetComponent<InteractableObjective>().CompleteObjective();
+        isInteracting = false;
+        if (interactableObjective.name == "GeneratorObjective")
+        {
+            interactableObjective.GetComponent<GeneratorScript>().TurnOnGenerator();
+        }
+    }
+
+    public IEnumerator LootCrate(Collider crate)
+    {
+        animator.SetTrigger("LootCrate");
+        isInteracting = true;
+        ShowInteractableButton(false);
+        crate.GetComponent<InteractableObjective>().ChargeProgressBar();
+        ShowInteractableButton(false);
+
+        yield return new WaitForSeconds(6f);
+
+        crate.GetComponent<InteractableObjective>().CompleteObjective();
         isInteracting = false;
     }
 
@@ -235,7 +260,7 @@ public class Player : MonoBehaviour
     
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Objective") || other.CompareTag("Door"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Objective") || other.CompareTag("Door") || other.CompareTag("LooteableCrate"))
         {
             ShowInteractableButton(false);
         }
