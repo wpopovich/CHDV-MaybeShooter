@@ -142,6 +142,11 @@ public class Player : MonoBehaviour
             ShowInteractableButton(true);
         }
 
+        if (isInteracting || isAttacking)
+        {
+            ShowInteractableButton(false);
+        }
+
         if (Input.GetAxisRaw("Interact") > 0)
         {
             if (other.CompareTag("Enemy") && !isAttacking)
@@ -170,14 +175,12 @@ public class Player : MonoBehaviour
     {
         animator.SetTrigger("Kill");
         isAttacking = true;
-        ShowInteractableButton(false);
 
         yield return new WaitForSeconds(0.3f); // Para que la animación de la kill del player coordine con la animación de muerte del enemigo
 
         enemyToKill.GetComponent<Enemy>().Kill();
         InventoryItem lootedItem = enemyToKill.GetComponent<Inventory>().LootInventory();
         playerInventory.SetInventory(lootedItem);
-        
 
         InteractableObjective objective = enemyToKill.GetComponent<InteractableObjective>();
         if (objective != null)
@@ -210,9 +213,7 @@ public class Player : MonoBehaviour
     {
         animator.SetTrigger("LootCrate");
         isInteracting = true;
-        ShowInteractableButton(false);
         crate.GetComponent<InteractableObjective>().ChargeProgressBar();
-        ShowInteractableButton(false);
 
         yield return new WaitForSeconds(6f);
 

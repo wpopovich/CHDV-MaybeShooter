@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CrateLoot (3)
   m_EditorClassIdentifier: 
   objectiveType: 0
-  objectiveText: 'Find the batteries to activate the generator. Batteries found:
-    2/4'
+  objectiveText: 'Batteries found: 2/4                          Find the batteries
+    to activate the generator.'
   completedText: 
   pickupType: 0
   audioClip: {fileID: 0}

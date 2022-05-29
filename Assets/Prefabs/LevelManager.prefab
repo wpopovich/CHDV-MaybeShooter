@@ -48,7 +48,8 @@ MonoBehaviour:
   player: {fileID: 0}
   audioSource: {fileID: -115875828383563474}
   alarmSound: {fileID: 8300000, guid: 3b6128a7abe31904d930a7f2b0fc0e2c, type: 3}
-  pauseMenu: {fileID: 0}
+  alarmCounter: 0
+  activeAlarm: 0
   gameOver: 0
 --- !u!82 &-115875828383563474
 AudioSource:
@@ -62,7 +63,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3b6128a7abe31904d930a7f2b0fc0e2c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 1
