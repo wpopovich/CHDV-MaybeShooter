@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-    public static float timeBeforeEndGame = 3f;
+    public float timeBeforeEndGame = 3f;
 
     public event Action onGameOver;
 

@@ -49,8 +49,8 @@ public class Player : MonoBehaviour
 
         if (item != null)
         {
-            itemImage.sprite = item.itemIcon;
-            //UIManager.GetInstance().ShowItemIcon(GetComponent<Inventory>().item.itemIcon);
+            //itemImage.sprite = item.itemIcon;
+            UIManager.GetInstance().ShowItemIcon(GetComponent<Inventory>().item.itemIcon);
         }
     }
 
