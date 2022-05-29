@@ -70,9 +70,13 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void OnKill()
     {
         visionLight.gameObject.SetActive(false);
+        alarmTimer = 0;
 
-        if (playerDetected)
+        if (playerDetected) {
+            playerDetected = false;
             LevelManager.GetInstance().StopAlarm();
+        }
+            
     }
 
     protected void LookForPlayer()

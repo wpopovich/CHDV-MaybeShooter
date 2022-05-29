@@ -49,11 +49,6 @@ public class SceneLoader : MonoBehaviour
         {
             LoadNextScene();
         }
-
-        if (CameraManager.cinematicHasFinished && activeSceneIsMainMenu())
-        {
-            SetupPlayButton();
-        }
     }
 
     public void LoadNextScene()
@@ -107,13 +102,6 @@ public class SceneLoader : MonoBehaviour
         Button button = playButton.GetComponent<Button>();
 
         button.interactable = false;
-    }
-
-    void SetupPlayButton()
-    {
-        
-        playButton = GameObject.Find("PlayButton").GetComponent<Button>();
-        playButton.onClick.AddListener(LoadNextScene);
     }
 
     bool activeSceneIsMainMenu()
