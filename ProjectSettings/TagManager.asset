@@ -9,6 +9,7 @@ TagManager:
   - WorldExit
   - Crossfade
   - Door
+  - LooteableCrate
   layers:
   - Default
   - TransparentFX

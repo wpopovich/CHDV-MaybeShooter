@@ -23,9 +23,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private AudioClip alarmSound;
 
-    [SerializeField]
-    private GameObject pauseMenu;
-
     public float alarmCounter;
     public bool activeAlarm;
     public bool gameOver = false;
