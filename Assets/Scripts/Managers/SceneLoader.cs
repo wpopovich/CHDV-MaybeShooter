@@ -49,11 +49,6 @@ public class SceneLoader : MonoBehaviour
         {
             LoadNextScene();
         }
-
-        if (CameraManager.cinematicHasFinished && activeSceneIsMainMenu())
-        {
-            SetupPlayButton();
-        }
     }
 
     public void LoadNextScene()
@@ -67,7 +62,13 @@ public class SceneLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(levelIndex);
+        if (levelIndex <= SceneManager.sceneCountInBuildSettings -1) {
+            SceneManager.LoadScene(levelIndex);
+        } else {
+            SceneManager.LoadScene(0);
+        }
+
+        
     }
 
     private void TriggerSceneLoad(int levelIndex)
@@ -101,13 +102,6 @@ public class SceneLoader : MonoBehaviour
         Button button = playButton.GetComponent<Button>();
 
         button.interactable = false;
-    }
-
-    void SetupPlayButton()
-    {
-        
-        playButton = GameObject.Find("PlayButton").GetComponent<Button>();
-        playButton.onClick.AddListener(LoadNextScene);
     }
 
     bool activeSceneIsMainMenu()

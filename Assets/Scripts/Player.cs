@@ -272,5 +272,10 @@ public class Player : MonoBehaviour
         interactButton.SetActive(value);
     }
 
+    public void Kill(UIManager.GameOverReason reason)
+    {
+        LevelManager.GetInstance().GameOver(reason);
+    }
+
     #endregion
 }

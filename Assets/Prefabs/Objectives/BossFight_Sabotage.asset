@@ -16,4 +16,4 @@ MonoBehaviour:
   objectiveText: Sabotage new droid prototype
   completedText: 
   pickupType: 0
-  audioClip: {fileID: 8300000, guid: d44f2c61920298a4190569e908db095f, type: 3}
+  audioClip: {fileID: 0}
