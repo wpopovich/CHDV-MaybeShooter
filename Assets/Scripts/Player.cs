@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     Vector3 velocity;
 
     public Inventory playerInventory;
-    InventoryItem item;
 
     public float speed;
     public float runningSpeed;
@@ -27,9 +26,6 @@ public class Player : MonoBehaviour
 
     public GameObject interactButton;
 
-    [SerializeField]
-    Image itemImage;
-
     public float turnSmoothTime = 0.25f;
     float turnSmoothVelocity;
 
@@ -44,13 +40,10 @@ public class Player : MonoBehaviour
         {
             Movement();
         }
-
-        InventoryItem item = GetComponent<Inventory>().item;
-
-        if (item != null)
+        
+        if (playerInventory.GetItem() != null)
         {
-            itemImage.sprite = item.itemIcon;
-            //UIManager.GetInstance().ShowItemIcon(GetComponent<Inventory>().item.itemIcon);
+            UIManager.GetInstance().ShowItemIcon(playerInventory.GetItem().itemIcon);
         }
     }
 
